@@ -81,5 +81,6 @@
 
   .navbar__menu.active {
     display: block;
+    background-color: rebeccapurple;
   }
 }

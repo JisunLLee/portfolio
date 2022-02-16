@@ -12,3 +12,34 @@ a {
 button {
   cursor: pointer;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.openModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 팝업이 열릴때 스르륵 열리는 효과 */
+  animation: modal-bg-show 0.3s;
+  overflow-y: scroll;
+  width: 100%;
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
