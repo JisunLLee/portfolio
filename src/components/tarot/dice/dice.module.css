@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+}
+
+.random_wrap {
+  display: flex;
+}
+
+.dice_btn {
+  font-size: 1.2em;
+  margin-left: 5px;
+  margin-right: 20px;
+}
+
+.dice_btn:hover {
+  cursor: pointer;
+}

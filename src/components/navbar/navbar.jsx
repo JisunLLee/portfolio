@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import style from "./Navbar.module.css";
+import style from './navbar.module.css';
 
-function Navbar() {
+function Navbar({ user, openModal }) {
   const [toggleBtn, setToggleBtn] = useState(false);
   const showToggleMenue = () => setToggleBtn(!toggleBtn);
 
@@ -36,10 +36,16 @@ function Navbar() {
           <Link to="/about">취미</Link>
         </li>
         <li>
-          <Link to="/resume">게임</Link>
+          <Link to="/tarot">타로 점</Link>
         </li>
       </ul>
-      <div className={style.navbar__emptyspace}></div>
+      <div className={style.navbar__login}>
+        {!user ? (
+          <button onClick={openModal}> 로그인 </button>
+        ) : (
+          <button onClick={openModal}> 로그아웃 </button>
+        )}
+      </div>
 
       <button className={style.navbar__toggleBtn}>
         {toggleBtn ? (

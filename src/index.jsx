@@ -1,5 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import AuthService from './service/auth_service';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const authService = new AuthService();
+ReactDOM.render(
+  <App authService={authService} />,
+  document.getElementById('root')
+);

@@ -51,6 +51,10 @@
   outline: 0;
 }
 
+.navbar__login {
+  padding: 8px 12px;
+}
+
 @media screen and (max-width: 780px) {
   .navbar {
     background: white;

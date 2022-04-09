@@ -1,3 +1,4 @@
+/*베이스 틀*/
 .silence_page {
   display: flex;
   width: 100vw;
@@ -17,6 +18,7 @@
   flex-direction: column;
 }
 
+/*사이드 메뉴바*/
 .silence_side_menu {
   display: flex;
   position: fixed;
@@ -27,12 +29,7 @@
   align-items: center;
 }
 
-.silence_write_select_category_btn {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
+/*카테고리 버튼(CAT, DOG, ALL, ADD)*/
 .silence_category_btn,
 .silence_category_btn_selected {
   display: flex;
@@ -55,6 +52,13 @@
 .silence_category_btn_img {
   width: 100%;
 }
+
+/*메인 영역, 상단 셀렉트 영역*/
+.silence_write_select_category_btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .silence_selection_area {
   display: flex;
   height: 71px;
@@ -62,17 +66,19 @@
   justify-content: flex-end;
   align-items: center;
 }
+.silence_selection_sort {
+  height: 20px;
+}
 
+/*메인영역, 하단 본문 부분*/
+/* 목록 */
 .silence_list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, auto));
   grid-auto-rows: minmax(180px, auto);
   gap: 20px;
 }
-
-.silence_selection_sort {
-  height: 20px;
-}
+/*목록 내 아이템*/
 .silence_item {
   position: relative;
   background-image: url(../../public/base.png);
@@ -103,9 +109,11 @@
 .silence_item_like_selected:hover {
   background-image: url(../../public/heart_seleted_hover.png);
 }
-.silence_write_img_wrap {
-  position: relative;
-  background-color: ivory;
+
+/*사진 작성 영역*/
+.silence_write_wrap {
+  display: flex;
+  flex-direction: column;
 }
 .silence_write_img {
   display: block;
@@ -114,16 +122,19 @@
   width: 640px;
   height: 640px;
 }
+.silence_write_btn_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .silence_write_btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   background-color: lightcoral;
+  display: inline-block;
+  width: fit-content;
   border-radius: 3px;
   padding: 3px;
-  /* transform: translate(-50%, -50%); */
+  width: 6rem;
 }
-
 .silence_write_input {
   display: none;
 }

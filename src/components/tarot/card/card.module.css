@@ -1,0 +1,114 @@
+.flipContainer,
+.container {
+  width: 280px;
+  height: 500px;
+  margin: auto;
+  position: relative;
+  perspective: 100rem;
+}
+.flipContainer {
+  transform: rotateY(180deg);
+}
+div.frontReverse,
+div.backReverse,
+div.back,
+div.front {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 280px;
+  height: 500px;
+  background-size: 100% 100%;
+}
+.frontHide,
+.backHide {
+  visibility: hidden;
+  opacity: 0;
+}
+div.backReverse,
+div.frontReverse {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-perspective: 0;
+  -webkit-transition: 2s;
+  backface-visibility: hidden; /*뒷면 숨기기*/
+  visibility: visible;
+  transition: 2s;
+}
+div.backReverse,
+div.back {
+  background-image: url(https://silencecatdog.s3.ap-northeast-2.amazonaws.com/tarot/cards/tarot0.PNG);
+}
+div.frontReverse,
+div.front {
+  background-image: url(https://silencecatdog.s3.ap-northeast-2.amazonaws.com/tarot/cards/tarot1.PNG);
+}
+div.backReverse {
+  transform: rotateY(-180deg);
+}
+div.frontReverse {
+  transform: rotateY(0deg);
+}
+section.frontReverse,
+section.front {
+  height: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  word-break: keep-all;
+}
+.num {
+  color: white;
+  font-size: 2em;
+  margin: 5px;
+}
+
+.tag_wrap {
+  z-index: 2;
+  flex-grow: 1;
+  font-size: 1em;
+  margin: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tag {
+  white-space: pre;
+  margin: 0%;
+}
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.description {
+  font-size: 1em;
+  margin: 30px;
+  text-align: center;
+}
+.title {
+  text-align: center;
+  font-size: 2em;
+  color: darkslategray;
+  margin: 0;
+  line-height: 10px;
+}
+
+.keyword {
+  font-size: 1.2em;
+}
+
+.icon {
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  background-size: 100% 100%;
+  opacity: 20%;
+  top: 30%;
+}

@@ -6,3 +6,9 @@ export const getNotion = (path) => {
         },
     }
 }
+
+export const postSilence = () => {
+    return {
+
+    }
+}

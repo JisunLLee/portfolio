@@ -11,6 +11,9 @@ a {
 
 button {
   cursor: pointer;
+  border: 0;
+  outline: 0;
+  font-family: Jua;
 }
 
 .modal {
@@ -42,4 +45,47 @@ button {
   to {
     opacity: 1;
   }
+}
+
+/*그라데이션 버튼*/
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #ff6e7f 0%,
+    #bfe9ff 51%,
+    #ff6e7f 100%
+  );
+}
+.btn-grad {
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+.border-grad:hover,
+.btn-grad:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-grad:hover {
+  cursor: pointer;
+}
+
+.border-grad {
+  border: 5px solid;
+  border-image: linear-gradient(
+    to right,
+    #ff6e7f 0%,
+    #bfe9ff 51%,
+    #ff6e7f 100%
+  );
+  border-image-slice: 1;
 }

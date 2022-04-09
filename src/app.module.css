@@ -1,0 +1,24 @@
+.modal {
+  position: fixed;
+  justify-content: center;
+  top: 30%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid cadetblue;
+  z-index: 100;
+}
+
+.page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  position: relative;
+  z-index: 0;
+}

@@ -1,0 +1,61 @@
+.loginform {
+  display: flex;
+  width: 100%;
+  z-index: 100;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+header,
+footer {
+  padding: 10px 0px;
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  background-color: cadetblue;
+  color: aliceblue;
+}
+
+.loginwrap {
+  padding: 0%;
+  flex-grow: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+
+.loginwrap ul {
+  flex-grow: 1;
+  padding: 0%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  align-items: center;
+}
+.loginwrap,
+.loginwrap ul,
+.loginwrap button {
+  width: 100%;
+}
+.loginwrap li {
+  width: 90%;
+}
+
+.loginwrap button {
+  margin: 0;
+  padding: 8px;
+  border-radius: 15px;
+  border: 2px solid cadetblue;
+  background-color: white;
+}
+
+.loginwrap button:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+}
