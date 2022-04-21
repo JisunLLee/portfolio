@@ -1,0 +1,188 @@
+.container {
+  margin-top: 60px;
+  width: 100vw;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: start;
+}
+.bubble {
+  position: relative;
+  background: pink;
+  border-radius: 7px;
+  padding: 5px 10px;
+  width: fit-content;
+  font-size: 2em;
+  color: aliceblue;
+}
+
+.first,
+.second {
+  justify-self: end;
+  grid-column: 1;
+}
+.first {
+  align-self: flex-end;
+}
+.second {
+  grid-row: 3;
+}
+
+.third {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.bubble__left_bottom:after,
+.bubble__right_top:after,
+.bubble__left_top:after {
+  content: '';
+  position: absolute;
+}
+.bubble__left_bottom,
+.bubble__left_top {
+  --x: -300px;
+  --y: 0;
+}
+.bubble__right_top {
+  --x: 300px;
+  --y: 0;
+}
+.bubble__left_bottom:after {
+  border-top: 0px solid pink;
+  border-left: 0px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid pink;
+  right: -10px;
+  top: 30px;
+}
+.bubble__left_top:after {
+  border-top: 10px solid pink;
+  border-left: 0px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 0px solid transparent;
+  right: -10px;
+  top: 10px;
+}
+.bubble__right_top:after {
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 0px solid transparent;
+  border-bottom: 10px solid pink;
+  left: -10px;
+  top: 10px;
+}
+.nasarm_wrap {
+  position: relative;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  grid-area: 1 / 2 / span 3/ 2;
+  align-self: end;
+}
+.nasarm_img {
+  width: 100%;
+  max-width: 500px;
+}
+.nasarm_img__cover {
+  position: absolute;
+  width: 100%;
+  max-width: 500px;
+  object-fit: contain;
+  --x: 0;
+  --y: 300px;
+}
+.text {
+  line-height: 40%;
+}
+
+.hide {
+  animation: fadeout 3s;
+  -moz-animation: fadeout 3s; /* Firefox */
+  -webkit-animation: fadeout 3s; /* Safari and Chrome */
+  -o-animation: fadeout 3s; /* Opera */
+  animation-fill-mode: forwards;
+}
+
+.show {
+  animation: fadein 2.5s;
+  -moz-animation: fadein 2.5s; /* Firefox */
+  -webkit-animation: fadein 2.5s; /* Safari and Chrome */
+  -o-animation: fadein 2.5s; /* Opera */
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+  from {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+@-moz-keyframes fadeout {
+  /* Firefox */
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(var(--x), var(--y));
+  }
+}
+@-webkit-keyframes fadeout {
+  /* Safari and Chrome */
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(var(--x), var(--y));
+  }
+}
+@-o-keyframes fadeout {
+  /* Opera */
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(var(--x), var(--y));
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: translate(var(--x), var(--y));
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    transform: translate(var(--x), var(--y));
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    transform: translate(var(--x), var(--y));
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    transform: translate(var(--x), var(--y));
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}

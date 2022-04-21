@@ -30,7 +30,7 @@ function Navbar({ user, openModal }) {
           <Link to="/silence">침묵의 냥이댕이</Link>
         </li>
         <li>
-          <Link to="/silence/write">그림쟁이</Link>
+          <Link to="/home2">그림쟁이</Link>
         </li>
         <li>
           <Link to="/about">취미</Link>

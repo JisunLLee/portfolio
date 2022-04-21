@@ -21,6 +21,7 @@ import axios from 'axios';
 import { Response } from './service/response_servise';
 import Login from './components/login/login';
 import Maker from './components/tarot/maker/maker';
+import Home2 from './components/home/home2';
 export default function App({ authService }) {
   const titleUpdater = useTitle('Hello!');
   Modal.setAppElement('body');
@@ -105,7 +106,7 @@ export default function App({ authService }) {
 
   return (
     <Router>
-      <body className={style.page}>
+      <div className={style.page}>
         <Modal
           className={style.modal}
           isOpen={isOpen}
@@ -127,7 +128,7 @@ export default function App({ authService }) {
             <Route path="/resume" element={<Resume />} />
             <Route path="/silence" element={<SilenceCatDog />} />
             <Route path="/silence/write" element={<SilenceWrite />} />
-            <Route path="/test" element={<Test />} />
+            <Route path="/home2" element={<Home2 />} />
             <Route path="/tarot" element={<Maker user={user} />} />
             <Route
               path="/resume/detail/:notion_id"
@@ -135,7 +136,7 @@ export default function App({ authService }) {
             />
           </Routes>
         </main>
-      </body>
+      </div>
     </Router>
   );
 }
