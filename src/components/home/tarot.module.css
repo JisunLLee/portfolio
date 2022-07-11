@@ -1,0 +1,37 @@
+:root {
+  --scale: 6.4;
+  --position_width: 65%;
+  --position_height: 7%;
+}
+
+.container {
+  height: 500vh;
+  position: relative;
+}
+.background_wrap {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+div.background {
+  display: block;
+  height: 100vh;
+  width: 100%;
+  position: sticky;
+  /* margin: auto auto; */
+  top: 0px;
+  overflow: hidden;
+}
+canvas.background {
+  height: 100%;
+  width: 100%;
+}
+img.background {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  transform-origin: var(--position_width) var(--position_height);
+  transform: scale(var(--scale));
+}

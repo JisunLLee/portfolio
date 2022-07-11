@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import style from './introduce.module.css';
 const Introduce = React.forwardRef((props, ref) => {
-  const { type, isHide, msg } = props;
-  console.log('[', type, '] isHide', isHide);
+  const { type, isHide, msg, img } = props;
+
   return (
     <section ref={ref} className={`${style.container} ${type}`}>
       <div
@@ -22,7 +22,7 @@ const Introduce = React.forwardRef((props, ref) => {
           className={`${style.nasarm_img__cover} ${
             isHide ? style.hide : style.show
           }`}
-          src="IMG_0378.PNG"
+          src={img}
         />
       </div>
       <div

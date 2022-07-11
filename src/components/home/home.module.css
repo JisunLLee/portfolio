@@ -11,6 +11,7 @@
   font-size: 3em;
   height: 3em;
   justify-self: center;
+  margin-bottom: -20px;
 }
 .first {
   position: relative;
@@ -18,25 +19,20 @@
   flex-direction: column;
   gap: 100px;
 }
-.frame_wrap {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.frame {
-  position: sticky;
-  position: -webkit-sticky;
-  margin-left: auto;
-  margin-right: auto;
-  top: 30px; /* required */
-  width: 90vw;
-  max-width: 1200px;
-  height: 70vh;
-  border: 5px solid pink;
-}
 
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+}
+
+.second_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.tarot_wrap {
+  height: 500vh;
+  background-color: purple;
 }
