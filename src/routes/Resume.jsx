@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import "../components/notion-styles.css";
-import "../components/notion/notion_style_by_lucia.css";
-import { getNotion } from "../Utils";
-import useAxios from "../API/useAxios";
-import { Blocks, resumeInfo, resumeCareer } from "../components/notion/Blocks";
-import { getTitle } from "../components/notion/Title";
-import { collection_list } from "../components/notion/Database";
-import { Divider } from "../components/notion/NotionForm";
-import ResumeDetail from "./ResumeDetail";
-import Modal from "react-modal";
+import { useEffect, useState } from 'react';
+import '../components/notion-styles.css';
+import '../components/notion/notion_style_by_lucia.css';
+import { getNotion } from '../Utils';
+import useAxios from '../API/useAxios';
+import { Blocks, resumeInfo, resumeCareer } from '../components/notion/Blocks';
+import { getTitle } from '../components/notion/Title';
+import { collection_list } from '../components/notion/Database';
+import { Divider } from '../components/notion/NotionForm';
+import ResumeDetail from './ResumeDetail';
+import Modal from 'react-modal';
 export default function Resume() {
   return (
     <div className="notion">
@@ -28,31 +28,31 @@ export default function Resume() {
 }
 
 const ResumeTitle = () => {
-  const { loading, data, error } = useAxios(getNotion("/resume/title"));
+  const { loading, data, error } = useAxios(getNotion('resume/title'));
   let title = getTitle(null);
   if (!loading) title = getTitle(data.data);
-  if (error !== null) console.log("error!!", error);
+  if (error !== null) console.log('error!!', error);
   return title;
 };
 
 function ResumeInfo() {
   const { loading, data, error } = useAxios(
-    getNotion("/resume/contents?type=info")
+    getNotion('resume/contents?type=info')
   );
-  let info = "Info Loading";
+  let info = 'Info Loading';
   if (!loading) info = resumeInfo(data.data);
-  if (error !== null) console.log("error!!", error);
+  if (error !== null) console.log('error!!', error);
   return <div className="notion-page">{info}</div>;
 }
 
 function ResumeIntroduce() {
   const { loading, data, error } = useAxios(
-    getNotion("/resume/contents?type=introduce")
+    getNotion('resume/contents?type=introduce')
   );
-  let introduce = "Introduce Loading";
+  let introduce = 'Introduce Loading';
   if (!loading)
     introduce = <Blocks data={data.data} parents_id="ResumeIntroduce" />;
-  if (error !== null) console.log("error!!", error);
+  if (error !== null) console.log('error!!', error);
   return (
     <div className="notion-page" key="ResumeIntroduce">
       {introduce}
@@ -64,16 +64,16 @@ function ResumeCareer() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [notion_id, setNotionId] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [career, setCareer] = useState("Career Loading");
+  const [career, setCareer] = useState('Career Loading');
 
-  Modal.setAppElement("body");
+  Modal.setAppElement('body');
 
   const onView = (id) => {
     setNotionId(id);
     setModalIsOpen(true);
   };
   const { loading, data, error } = useAxios(
-    getNotion("/resume/contents?type=career")
+    getNotion('resume/contents?type=career')
   );
 
   if (!loading) if (isLoading) setIsLoading(false);
@@ -89,7 +89,7 @@ function ResumeCareer() {
     }
   }, [isLoading]);
 
-  if (error !== null) console.log("error!!", error);
+  if (error !== null) console.log('error!!', error);
   return (
     <div className="notion-page">
       {career}
@@ -102,11 +102,11 @@ function ResumeCareer() {
 
 function ResumeGoodby() {
   const { loading, data, error } = useAxios(
-    getNotion("/resume/contents?type=goodby")
+    getNotion('resume/contents?type=goodby')
   );
-  let goodby = "Goodby Loading";
+  let goodby = 'Goodby Loading';
   if (!loading) goodby = <Blocks data={data.data} parents_id="ResumeGoodby" />;
-  if (error !== null) console.log("error!!", error);
+  if (error !== null) console.log('error!!', error);
   return (
     <div className="notion-page" key="ResumeGoodby">
       {goodby}
