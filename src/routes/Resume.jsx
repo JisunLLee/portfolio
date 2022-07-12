@@ -28,7 +28,7 @@ export default function Resume() {
 }
 
 const ResumeTitle = () => {
-  const { loading, data, error } = useAxios(getNotion('resume/title'));
+  const { loading, data, error } = useAxios(getNotion('/resume/title'));
   let title = getTitle(null);
   if (!loading) title = getTitle(data.data);
   if (error !== null) console.log('error!!', error);
@@ -37,7 +37,7 @@ const ResumeTitle = () => {
 
 function ResumeInfo() {
   const { loading, data, error } = useAxios(
-    getNotion('resume/contents?type=info')
+    getNotion('/resume/contents?type=info')
   );
   let info = 'Info Loading';
   if (!loading) info = resumeInfo(data.data);
@@ -47,7 +47,7 @@ function ResumeInfo() {
 
 function ResumeIntroduce() {
   const { loading, data, error } = useAxios(
-    getNotion('resume/contents?type=introduce')
+    getNotion('/resume/contents?type=introduce')
   );
   let introduce = 'Introduce Loading';
   if (!loading)
@@ -73,7 +73,7 @@ function ResumeCareer() {
     setModalIsOpen(true);
   };
   const { loading, data, error } = useAxios(
-    getNotion('resume/contents?type=career')
+    getNotion('/resume/contents?type=career')
   );
 
   if (!loading) if (isLoading) setIsLoading(false);
@@ -102,7 +102,7 @@ function ResumeCareer() {
 
 function ResumeGoodby() {
   const { loading, data, error } = useAxios(
-    getNotion('resume/contents?type=goodby')
+    getNotion('/resume/contents?type=goodby')
   );
   let goodby = 'Goodby Loading';
   if (!loading) goodby = <Blocks data={data.data} parents_id="ResumeGoodby" />;
