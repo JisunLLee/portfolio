@@ -1,6 +1,6 @@
 export const getNotion = (path) => {
     return {
-        url: "http://localhost:3003"+path,
+        url: process.env.REACT_APP_SERVER_URL + path,
         headers: {
         "Content-Type": "application/json",
         },

@@ -1,17 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
-import useAxios from "../../API/useAxios";
+import React, { useRef, useEffect, useState } from 'react';
+import useAxios from '../../API/useAxios';
 
 export default function Write({ category, src }) {
   if (!src)
     switch (category) {
-      case "CAT":
-        src = "IMG_0170.PNG";
+      case 'CAT':
+        src = 'IMG_0170.PNG';
         break;
-      case "DOG":
-        src = "IMG_0171.PNG";
+      case 'DOG':
+        src = 'IMG_0171.PNG';
         break;
       default:
-        src = "IMG_0177.PNG";
+        src = 'IMG_0177.PNG';
         break;
     }
 
@@ -29,8 +29,8 @@ export default function Write({ category, src }) {
   const loadImg = (event) => {
     const img = event.target.files[0];
     const file = new FormData();
-    file.append("file", img);
-    file.append("type", category);
+    file.append('file', img);
+    file.append('type', category);
     setFormData(file);
     const reader = new FileReader();
     reader.onload = () => setImages(reader.result);
@@ -41,10 +41,10 @@ export default function Write({ category, src }) {
 
   const useSave = () => {
     const info = {
-      method: "post",
-      url: "http://localhost:3003/silence/contents",
+      method: 'post',
+      url: process.env.REACT_APP_SERVER_URL + 'silence/contents',
       headers: {
-        "Content-Type": "file.type",
+        'Content-Type': 'file.type',
       },
       data: formData,
     };

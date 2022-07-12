@@ -3,7 +3,7 @@ import axios from 'axios';
 class TarotDB {
     constructor(){
         this.connect = axios.create({
-            baseURL:'http://localhost:3003/',
+            baseURL:process.env.REACT_APP_SERVER_URL,
           });;
         this.Response = Response();
     }

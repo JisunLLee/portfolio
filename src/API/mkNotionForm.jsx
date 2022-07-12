@@ -1,16 +1,16 @@
-import axios from "axios";
-import React from "react";
+import axios from 'axios';
+import React from 'react';
 
 // import React from "react";
 const client = axios.create({
-  baseURL: "http://localhost:3003",
+  baseURL: process.env.REACT_APP_SERVER_URL,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
 export function mkBlocks(data) {
-  console.log("mkBlocks", data);
+  console.log('mkBlocks', data);
 
   const data_form = data.map((data_form_) => {
     if (!data_form_.has_children) {
@@ -45,26 +45,26 @@ export function mkBlocks(data) {
 
 export function notionForm(v) {
   switch (v.type) {
-    case "divider": {
+    case 'divider': {
       return <hr className="notion-hr" />;
     }
-    case "heading_1": {
-      return repeatText(v.heading_1.text, v.id, "h1", "heading_1");
+    case 'heading_1': {
+      return repeatText(v.heading_1.text, v.id, 'h1', 'heading_1');
     }
-    case "heading_2": {
-      return repeatText(v.heading_2.text, v.id, "h2", "heading_2");
+    case 'heading_2': {
+      return repeatText(v.heading_2.text, v.id, 'h2', 'heading_2');
     }
-    case "heading_3": {
-      return repeatText(v.heading_3.text, v.id, "h3", "heading_3");
+    case 'heading_3': {
+      return repeatText(v.heading_3.text, v.id, 'h3', 'heading_3');
     }
-    case "paragraph": {
-      return repeatText(v.paragraph.text, v.id, "p", "notion-blank");
+    case 'paragraph': {
+      return repeatText(v.paragraph.text, v.id, 'p', 'notion-blank');
     }
-    case "image": {
-      console.log("image", v);
+    case 'image': {
+      console.log('image', v);
       return <img className="notion-image" key={v.id} src={v.image.file.url} />;
     }
-    case "child_database": {
+    case 'child_database': {
       return (
         <div className="notion-collection-header">
           <div className="notion-collection-header-title" key={v.id}>
@@ -85,12 +85,12 @@ function mkStyle(annotations, text, idx) {
     if (annotations.strikethrough)
       style.push('textDecorationLine: "line-through"');
     if (annotations.underline) style.push('textDecorationLine:"underline"');
-    if (annotations.code) add_class_name.push("notion-inline-code");
-    if (annotations.color !== "default")
-      add_class_name.push("notion-" + annotations.color);
+    if (annotations.code) add_class_name.push('notion-inline-code');
+    if (annotations.color !== 'default')
+      add_class_name.push('notion-' + annotations.color);
 
     if (add_class_name.length) {
-      style = style.join(",");
+      style = style.join(',');
       add_class_name.forEach((v, i) => {
         if (i === 0)
           result = (
@@ -116,16 +116,16 @@ function repeatText(text, id, Tag, className) {
   }
   return (
     <Tag className={className} key={id}>
-      {paragraph_text}{" "}
+      {paragraph_text}{' '}
     </Tag>
   );
 }
 
 export async function getChildren(id) {
   const data = await client.get(
-    "/blocks?resume=false&notionform=false&id=" + id
+    '/blocks?resume=false&notionform=false&id=' + id
   );
-  console.log("[getChildren]", data);
+  console.log('[getChildren]', data);
   return data.data;
 }
 

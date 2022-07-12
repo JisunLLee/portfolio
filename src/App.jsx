@@ -28,7 +28,7 @@ export default function App({ authService }) {
   const [user, setUser] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const httpClient = axios.create({
-    baseURL: 'http://localhost:3003/',
+    baseURL: process.env.REACT_APP_SERVER_URL,
   });
 
   const userDB = new UserDB(httpClient);
