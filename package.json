@@ -41,8 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": [
-    "https://api.notion.com", 
-    "http://localhost:5000"
-  ]
+  "proxy": "http://localhost:5000"
 }
