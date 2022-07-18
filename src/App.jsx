@@ -23,7 +23,7 @@ import Login from './components/login/login';
 import Maker from './components/tarot/maker/maker';
 import Home2 from './components/home/home2';
 export default function App({ authService }) {
-  const titleUpdater = useTitle('Hello!');
+  const titleUpdater = useTitle('이지선 포트폴리오');
   Modal.setAppElement('body');
   const [user, setUser] = useState();
   const [isOpen, setIsOpen] = useState(false);
@@ -94,7 +94,7 @@ export default function App({ authService }) {
         controlModal();
         alert(`탈퇴완료!`);
       })
-      .catch((e) => (e ? alert(`탈퇴 실패 ㅠㅜ 다시 시도해 주세요`) : ''));
+      .catch((e) => (e ? alert(`탈퇴 실패. 다시 시도해 주세요`) : ''));
   };
   const controlModal = () => {
     setIsOpen((prv) => !prv);
