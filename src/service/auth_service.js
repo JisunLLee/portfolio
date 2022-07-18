@@ -15,7 +15,7 @@ class AuthService {
             .then(res => this.userForm({...res.user, platform:providerName, ...res.user.reloadUserInfo,...res._tokenResponse}))
             .then(res => this.Response.success(201, res, providerName+" 로그인"))
             .catch((error) => {
-                console.log("signInGoogle error:",error)
+                console.log(error)
                 // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
