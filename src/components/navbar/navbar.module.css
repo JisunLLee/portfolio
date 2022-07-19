@@ -41,14 +41,7 @@
 }
 
 .navbar__toggleBtn {
-  position: absolute;
-  background-color: transparent;
-  right: 2rem;
-  font-size: 1.5rem;
-  padding-top: 0.6rem;
   display: none;
-  border: 0;
-  outline: 0;
 }
 
 .navbar__login {
@@ -74,17 +67,42 @@
     padding: 0.5rem 1.2rem;
   }
 
+  .navbar__menu.show {
+    z-index: 1;
+    display: flex;
+    background-color: rgb(255, 194, 204, 0.8);
+  }
+  .navbar__menu.hide {
+    display: none;
+  }
+
+
   .navbar__menu li {
     width: 100%;
     text-align: center;
   }
-
+  
   .navbar__toggleBtn {
-    display: block;
+    display: flex;
+    position: absolute;
+    height: 100%;
+    right: 1rem;
+    padding: 8px 12px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .navbar__toggleBtn
+  .show {
+    content: url(../../../public/close.png);
+  }
+  .navbar__toggleBtn
+  .hide {
+    content: url(../../../public/menu.png);
+
+    
   }
 
-  .navbar__menu.active {
-    display: block;
-    background-color: rebeccapurple;
-  }
+
 }

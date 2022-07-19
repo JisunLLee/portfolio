@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useTitle } from './API/useTings';
-import Home from './routes/Home';
 import About from './routes/About';
 import Resume from './routes/Resume';
 import Navbar from './components/navbar/navbar';
@@ -21,7 +20,7 @@ import axios from 'axios';
 import { Response } from './service/response_servise';
 import Login from './components/login/login';
 import Maker from './components/tarot/maker/maker';
-import Home2 from './components/home/home2';
+import Home from './components/home/home2';
 export default function App({ authService }) {
   const titleUpdater = useTitle('이지선 포트폴리오');
   Modal.setAppElement('body');
@@ -128,7 +127,6 @@ export default function App({ authService }) {
             <Route path="/resume" element={<Resume />} />
             <Route path="/silence" element={<SilenceCatDog />} />
             <Route path="/silence/write" element={<SilenceWrite />} />
-            <Route path="/home2" element={<Home2 />} />
             <Route path="/tarot" element={<Maker user={user} />} />
             <Route
               path="/resume/detail/:notion_id"
