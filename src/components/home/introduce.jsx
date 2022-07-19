@@ -1,8 +1,13 @@
 import React from 'react';
+import { okAlert } from '../../common/alert';
 import style from './introduce.module.css';
+import { Link } from 'react-router-dom';
 const Introduce = React.forwardRef((props, ref) => {
-  const { type, isHide, msg, img } = props;
+  const { type, isHide, msg, img, page } = props;
 
+  const onClick = () => {
+    page === '/' && okAlert('만나서 반가와요!');
+  };
   return (
     <section ref={ref} className={`${style.container} ${type}`}>
       <div
@@ -16,14 +21,17 @@ const Introduce = React.forwardRef((props, ref) => {
           </p>
         ))}
       </div>
-      <div className={style.nasarm_wrap}>
+      <div className={style.nasarm_wrap} onClick={onClick}>
         <img className={style.nasarm_img} src="IMG_0178.PNG" />
-        <img
+        <div
           className={`${style.nasarm_img__cover} ${
             isHide ? style.hide : style.show
           }`}
-          src={img}
-        />
+        >
+          <Link to={page}>
+            <img src={img} onClick={onClick} />
+          </Link>
+        </div>
       </div>
       <div
         className={`${style.bubble} ${style.bubble__left_top} ${

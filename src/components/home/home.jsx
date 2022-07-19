@@ -146,6 +146,7 @@ const Home2 = (props) => {
               third: `I'M<br/>JISUN`,
             }}
             ref={firstRef}
+            page="/"
           />
           <Introduce
             type="developer"
@@ -157,6 +158,7 @@ const Home2 = (props) => {
             }}
             img="IMG_0378.PNG"
             ref={developerRef}
+            page="/resume"
           />
         </section>
       </section>
@@ -171,6 +173,7 @@ const Home2 = (props) => {
             second: '침묵의!',
             third: `냥이 댕이!`,
           }}
+          page="/"
           ref={silenceRef}
         />
       </section>

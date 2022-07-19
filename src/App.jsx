@@ -20,7 +20,7 @@ import axios from 'axios';
 import { Response } from './service/response_servise';
 import Login from './components/login/login';
 import Maker from './components/tarot/maker/maker';
-import Home from './components/home/home2';
+import Home from './components/home/home';
 export default function App({ authService }) {
   const titleUpdater = useTitle('이지선 포트폴리오');
   Modal.setAppElement('body');

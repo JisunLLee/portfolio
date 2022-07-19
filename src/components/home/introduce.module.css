@@ -94,6 +94,12 @@
   --x: 0;
   --y: 300px;
 }
+.nasarm_img__cover img{
+  width: 100%;
+  max-width: 500px;
+  object-fit: contain;
+  cursor: pointer;
+}
 .text {
   line-height: 40%;
 }
