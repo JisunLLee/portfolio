@@ -1,7 +1,11 @@
 import React from 'react';
 import style from './navbar.module.css';
 import { Link } from 'react-router-dom';
+import { okAlert } from '../../common/alert';
 const Navbar_item = ({ toggleBtn, children }) => {
+  const onClick = () => {
+    okAlert('준비 중입니다.');
+  };
   return (
     <ul
       className={
@@ -14,17 +18,16 @@ const Navbar_item = ({ toggleBtn, children }) => {
         <Link to="/resume">이력서</Link>
       </li>
       <li>
-        <Link to="/resume">개발공부</Link>
+        <a
+          href="https://chain-bubbler-40d.notion.site/91509427c2f54b65b450e0d8a14bbad3"
+          target="_blank"
+        >
+          개발공부
+        </a>
       </li>
-      <li>
-        <Link to="/silence">침묵의 냥이댕이</Link>
-      </li>
-      <li>
-        <Link to="/home">그림쟁이</Link>
-      </li>
-      <li>
-        <Link to="/about">취미</Link>
-      </li>
+      <li onClick={onClick}>침묵의 냥이댕이</li>
+      {/* <li onClick={onClick}>그림쟁이</li>
+      <li onClick={onClick}>취미</li> */}
       <li>
         <Link to="/tarot">타로 점</Link>
       </li>
