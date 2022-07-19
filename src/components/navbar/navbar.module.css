@@ -50,9 +50,14 @@
 
 @media screen and (max-width: 780px) {
   .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 3rem;
     background: white;
     flex-direction: column;
     align-items: flex-start;
+    z-index: 1;
   }
 
   .navbar__logo {

@@ -36,3 +36,9 @@
   height: 500vh;
   background-color: purple;
 }
+
+@media screen and (max-width: 780px) {
+  .first_wrap{
+    margin-top: 3rem;
+  }
+}

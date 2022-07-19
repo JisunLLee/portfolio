@@ -40,3 +40,10 @@
   height: 9px;
   width: 9px;
 }
+
+@media screen and (max-width: 780px) {
+  .frame {
+    top: 8%;
+    height: 90vh;
+  }
+}
