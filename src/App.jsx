@@ -79,6 +79,7 @@ export default function App({ authService }) {
   };
 
   const onLogOut = () => {
+    console.log('logOut Click');
     authService.onCurrentUser() && authService.logOut();
     setUser();
     controlModal();
