@@ -3,7 +3,6 @@ import style from './tarot.module.css';
 
 const Tarot = React.forwardRef((props, ref) => {
   const { scale, imgW, imgH } = props.imgSize;
-  console.log('imgSize', props.imgSize);
   document.documentElement.style.setProperty('--scale', scale);
   document.documentElement.style.setProperty('--position_width', imgW + '%');
   document.documentElement.style.setProperty('--position_height', imgH + '%');

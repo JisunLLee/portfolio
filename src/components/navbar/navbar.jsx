@@ -18,7 +18,7 @@ function Navbar({ user, openModal }) {
           <Link to="/">Frontend Developer</Link>
         </li>
       </ul>
-      <Navbar_item toggleBtn={toggleBtn}>
+      <Navbar_item uer={user} toggleBtn={toggleBtn}>
         <Navbar_login openModal={openModal} user={user} />
       </Navbar_item>
 

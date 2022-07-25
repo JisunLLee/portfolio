@@ -5,12 +5,14 @@ const Preview = ({ user, tarot, onRollDice, children }) => {
     tarot;
   document.documentElement.style.setProperty('--main-color', backgroundColor);
   document.documentElement.style.setProperty('--border-color', borderColor);
-  console.log('tarot', tarot);
+
   return (
     <div>
       <div className={style.container}>
         <section className={style.card}>
-          <h1 className={style.h1}>{user.username}</h1>
+          <h1 className={style.h1}>
+            {user === 'TESTER' ? '체험 중' : user.username}
+          </h1>
           <div className={style.img_wrap}>
             <img
               className={style.img}

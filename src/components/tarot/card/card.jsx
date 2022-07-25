@@ -3,7 +3,6 @@ import { BombAni, SparkAni } from '../../../service/lottie_servise';
 import style from './card.module.css';
 
 const Tarot = ({ item, position, holdTime, message, data }) => {
-  console.log('[TAROT]', data);
   const [cardState, setCardState] = useState('back');
   const sparkRef = useRef();
   const icon_url = `https://silencecatdog.s3.ap-northeast-2.amazonaws.com/tarot/cards/icon/${data.num}.png`;

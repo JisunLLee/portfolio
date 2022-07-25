@@ -6,6 +6,7 @@ const Navbar_item = ({ toggleBtn, children }) => {
   const onClick = () => {
     okAlert('준비 중입니다.');
   };
+
   return (
     <ul
       className={
@@ -28,9 +29,11 @@ const Navbar_item = ({ toggleBtn, children }) => {
       <li onClick={onClick}>침묵의 냥이댕이</li>
       {/* <li onClick={onClick}>그림쟁이</li>
       <li onClick={onClick}>취미</li> */}
+
       <li>
-        <Link to="/tarot">타로 점</Link>
+        <Link to="/tarot">타로점</Link>
       </li>
+
       {children}
     </ul>
   );

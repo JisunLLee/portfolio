@@ -26,6 +26,7 @@ export default function App({ authService }) {
   Modal.setAppElement('body');
   const [user, setUser] = useState();
   const [isOpen, setIsOpen] = useState(false);
+  const [tryCount, setTryCount] = useState(1);
   const httpClient = axios.create({
     baseURL: process.env.REACT_APP_SERVER_URL,
   });
@@ -79,7 +80,6 @@ export default function App({ authService }) {
   };
 
   const onLogOut = () => {
-    console.log('logOut Click');
     authService.onCurrentUser() && authService.logOut();
     setUser();
     controlModal();
@@ -123,12 +123,23 @@ export default function App({ authService }) {
         <Navbar openModal={controlModal} user={user ? user : false} />
         <main className={style.main}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home user={user ? user : false} />} />
             <Route path="/about" element={<About />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/silence" element={<SilenceCatDog />} />
             <Route path="/silence/write" element={<SilenceWrite />} />
-            <Route path="/tarot" element={<Maker user={user} />} />
+            <Route
+              path="/tarot"
+              element={
+                <Maker
+                  user={user ? user : false}
+                  openModal={controlModal}
+                  setUser={setUser}
+                  count={tryCount}
+                  setCount={setTryCount}
+                />
+              }
+            />
             <Route
               path="/resume/detail/:notion_id"
               element={<ResumeDetail />}

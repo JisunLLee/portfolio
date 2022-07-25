@@ -4,7 +4,7 @@ import Cards from '../cards/cards';
 import style from './board.module.css';
 import Other from '../cards/other';
 
-const RandomBoard = ({ item, data, user }) => {
+const Board = ({ item, data, user }) => {
   const [holdTime, setHoldTime] = useState({});
   const boardRef = useRef();
   useEffect(() => {
@@ -57,4 +57,4 @@ const RandomBoard = ({ item, data, user }) => {
   );
 };
 
-export default RandomBoard;
+export default Board;

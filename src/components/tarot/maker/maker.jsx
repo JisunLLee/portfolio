@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from 'react';
+
 import Modal from 'react-modal';
 import TarotDB from '../../../service/tarot_db_service';
 import Preview from '../preview/preview';
 import style from './maker.module.css';
 import RandomBoard from '../board/board';
+import NoUser from '../noUser';
+import { useNavigate } from 'react-router-dom';
 Modal.setAppElement('body');
-const Maker = ({ user }) => {
-  console.log('user:', user);
+const Maker = ({ user, openModal, setUser, count, setCount }) => {
   const [tarot, setTarot] = useState(false);
   const [rollItem, setRollItem] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const tarotDB = new TarotDB();
-
+  const navigate = useNavigate();
+  const onNoUser = () => NoUser(openModal, setUser, count, setCount);
   const controlModal = () => {
     setIsModalOpen((prv) => !prv);
   };
 
   const onRollDice = async (item) => {
-    const result = await tarotDB.putTarotInfo(user.id, item);
+    const result =
+      user === 'TESTER'
+        ? await tarotDB.item(item)
+        : await tarotDB.putTarotInfo(user.id, item);
     setTarot((prv) => {
       return { ...prv, ...result.data };
     });
@@ -26,12 +32,10 @@ const Maker = ({ user }) => {
   };
 
   const getUserTarot = async () => {
-    console.log('[MAKER][getUserTarot]');
     return user && (await tarotDB.getTarotInfo(user.id));
   };
 
   const postUserTarot = async () => {
-    console.log('[MAKER][postUserTarot]');
     return (
       user.id &&
       (await tarotDB
@@ -49,6 +53,7 @@ const Maker = ({ user }) => {
   };
 
   useEffect(() => {
+    console.log('MAKER count', count);
     async function startPage() {
       const isUserTarot = await getUserTarot();
       isUserTarot.result === '성공' && setTarot(isUserTarot.data);
@@ -56,8 +61,17 @@ const Maker = ({ user }) => {
         isUserTarot.act === '신규' &&
         (await postUserTarot());
     }
-    startPage();
-  }, [user]);
+
+    const goBack = () => {
+      navigate(-1);
+    };
+
+    user && user === 'TESTER' ? onRollDice('ALL') : startPage();
+    if (!user && count) {
+      if (count < 3) onNoUser();
+      else goBack();
+    }
+  }, [user, count]);
 
   return (
     <div className={style.container}>
@@ -70,7 +84,7 @@ const Maker = ({ user }) => {
           <RandomBoard item={rollItem.item} data={rollItem.data} user={user} />
         )}
       </Modal>
-      {tarot && user ? (
+      {user && tarot ? (
         <Preview onRollDice={onRollDice} user={user} tarot={tarot}>
           <div className={style.roll}>
             <p>
@@ -84,7 +98,7 @@ const Maker = ({ user }) => {
           </div>
         </Preview>
       ) : (
-        <div>Loading</div>
+        <div>회원만 이용 가능합니다</div>
       )}
     </div>
   );
