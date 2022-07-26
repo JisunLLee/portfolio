@@ -1,40 +1,40 @@
-import { Database } from "./Database";
-import { Toggle } from "./Toggle";
-import Blocks from "./Blocks";
-import { getNotion } from "../../Utils";
-import { TableOfContents } from "./TableOfContents";
-import useAxios from "../..//API/useAxios";
-import { useRef } from "react";
+import { Database } from './Database';
+import { Toggle } from './Toggle';
+import Blocks from './Blocks';
+import { getNotion } from '../../Utils';
+import { TableOfContents } from './TableOfContents';
+import useAxios from '../..//API/useAxios';
+import { useRef } from 'react';
 
 export const NotionContentsForm = ({ v, parents_id }) => {
   const ref = useRef();
 
   switch (v.type) {
-    case "divider": {
+    case 'divider': {
       return <hr className="notion-hr" key={v.id} />;
     }
-    case "heading_1": {
+    case 'heading_1': {
       return (
         <h1 className="notion-h1" id={v.id} key={v.id}>
           {repeatText(v.heading_1.text)}
         </h1>
       );
     }
-    case "heading_2": {
+    case 'heading_2': {
       return (
         <h2 className="notion-h2" id={v.id} key={v.id}>
           {repeatText(v.heading_2.text)}
         </h2>
       );
     }
-    case "heading_3": {
+    case 'heading_3': {
       return (
         <h3 className="notion-h3" id={v.id} key={v.id}>
           {repeatText(v.heading_3.text)}
         </h3>
       );
     }
-    case "paragraph": {
+    case 'paragraph': {
       return (
         <div className="notion-blank" key={v.id}>
           {repeatText(v.paragraph.text)}
@@ -44,21 +44,21 @@ export const NotionContentsForm = ({ v, parents_id }) => {
         </div>
       );
     }
-    case "image": {
+    case 'image': {
       return <img className="notion_image" key={v.id} src={v.image.file.url} />;
     }
-    case "child_database": {
+    case 'child_database': {
       const children = v.children;
       const title = v.child_database.title;
       const child = Database({ title, children });
       return child;
     }
-    case "synced_block": {
+    case 'synced_block': {
       const synced_from_id = v.synced_block.synced_from.block_id;
       return <BlocksComponent block_id={synced_from_id} />;
     }
-    case "bulleted_list_item":
-    case "numbered_list_item": {
+    case 'bulleted_list_item':
+    case 'numbered_list_item': {
       return (
         <li key={v.id}>
           {repeatText(v[v.type].text)}
@@ -68,21 +68,21 @@ export const NotionContentsForm = ({ v, parents_id }) => {
         </li>
       );
     }
-    case "table_of_contents": {
-      console.log("table_of_contents:", v);
+    case 'table_of_contents': {
+      console.log('table_of_contents:', v);
       return <TableOfContents parents_id={parents_id} />;
     }
-    case "toggle": {
+    case 'toggle': {
       return <Toggle data={v} />;
     }
-    case "column_list": {
+    case 'column_list': {
       return (
         <div className="notion_row" key={v.id}>
           {v.childrenForm}
         </div>
       );
     }
-    case "column": {
+    case 'column': {
       return (
         <div className="notion_row_item" key={v.id}>
           {v.childrenForm}
@@ -90,7 +90,7 @@ export const NotionContentsForm = ({ v, parents_id }) => {
       );
     }
     default:
-      console.log(v.type, ":", v);
+      console.log(v.type, ':', v);
       return (
         <h2 className="heading_3" key={v.id}>
           {v.type} 데이터 넣어줘야 함
@@ -131,12 +131,12 @@ export function style(annotations, text, idx, href) {
   if (annotations.strikethrough)
     style.push('textDecorationLine: "line-through"');
   if (annotations.underline) style.push('textDecorationLine: "underline"');
-  if (annotations.code) add_class_name.push("notion-inline-code");
-  if (annotations.color !== "default")
-    add_class_name.push("notion-" + annotations.color);
+  if (annotations.code) add_class_name.push('notion-inline-code');
+  if (annotations.color !== 'default')
+    add_class_name.push('notion-' + annotations.color);
 
   if (add_class_name.length) {
-    style = style.join(",");
+    style = style.join(',');
     add_class_name.forEach((v, i) => {
       if (i === 0)
         result = (
@@ -180,11 +180,11 @@ export function repeatText(text) {
 
 function BlocksComponent({ block_id }) {
   const { loading, data, error } = useAxios(
-    getNotion(`/contents?id=${block_id}`)
+    getNotion(`contents?id=${block_id}`)
   );
-  let block_data = "is Loading";
+  let block_data = 'is Loading';
   if (!loading) block_data = <Blocks data={data.data} parents_id={block_id} />;
-  if (error !== null) console.log("error!!", error);
+  if (error !== null) console.log('error!!', error);
   return <div key={block_id}>{block_data}</div>;
 }
 

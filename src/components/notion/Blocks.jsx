@@ -1,9 +1,9 @@
-import { NotionContentsForm, repeatText } from "./NotionForm";
-import useAxios from "../../API/useAxios";
-import { getNotion } from "../../Utils";
+import { NotionContentsForm, repeatText } from './NotionForm';
+import useAxios from '../../API/useAxios';
+import { getNotion } from '../../Utils';
 
 export const Blocks = ({ data, parents_id }) => {
-  console.log("blocks!!!", data);
+  console.log('blocks!!!', data);
   if (data === undefined) return <div key={parents_id}></div>;
   if (data.length === 0) return <div key={parents_id}></div>;
   let data_form;
@@ -12,7 +12,7 @@ export const Blocks = ({ data, parents_id }) => {
   if (data[0]) {
     data_form = data.map((data_form_, idx) => {
       const with_children = { ...data_form_ };
-      if (with_children.has_children && !("childrenForm" in with_children)) {
+      if (with_children.has_children && !('childrenForm' in with_children)) {
         const children = GetChildren({ parents: data_form_ });
         with_children.childrenForm = (
           <Blocks data={children} parents_id={data_form_.id} />
@@ -21,7 +21,7 @@ export const Blocks = ({ data, parents_id }) => {
       const form = (
         <NotionContentsForm v={with_children} parents_id={parents_id} />
       );
-      if (form.type === "li") {
+      if (form.type === 'li') {
         is_list = true;
         list_type[idx] = data_form_.type;
       }
@@ -46,7 +46,7 @@ const mkListForm = ({ data_form, list_type }) => {
     if (list_bundle[0]) {
       const now_type = list_type[i];
       const prv_type = list_type[i - 1];
-      if (data.type === "li") {
+      if (data.type === 'li') {
         //지금 리스트타입과 비교해서 같은 리스트에 묶여있는지 확인.
         if (now_type === prv_type) {
           list_bundle.push(data);
@@ -69,7 +69,7 @@ const mkListForm = ({ data_form, list_type }) => {
         new_data_form.push(data);
       }
     } else {
-      if (data.type === "li") {
+      if (data.type === 'li') {
         list_bundle.push(data);
       } else {
         new_data_form.push(data);
@@ -82,7 +82,7 @@ const mkListForm = ({ data_form, list_type }) => {
 const mk_list = (prv_type, list_bundle, key) => {
   let list;
   switch (prv_type) {
-    case "bulleted_list_item": {
+    case 'bulleted_list_item': {
       list = (
         <ul className="list_item_bundle" key={key}>
           {list_bundle}
@@ -90,7 +90,7 @@ const mk_list = (prv_type, list_bundle, key) => {
       );
       break;
     }
-    case "numbered_list_item": {
+    case 'numbered_list_item': {
       list = (
         <ol className="list_item_bundle" key={key}>
           {list_bundle}
@@ -106,14 +106,14 @@ export const resumeInfo = (data) => {
   const data_form = data.children.map((data_form_) => {
     const contents = data_form_.contents.map((contents_) => {
       switch (contents_.type) {
-        case "paragraph": {
+        case 'paragraph': {
           return (
             <p className="notion-blank" key={contents_.id}>
               {repeatText(contents_.paragraph.text)}
             </p>
           );
         }
-        case "image": {
+        case 'image': {
           return (
             <img
               className="notion_resume_info_image"
@@ -161,8 +161,8 @@ export default Blocks;
 
 export const GetChildren = ({ parents }) => {
   const { loading, data, error } = useAxios(
-    getNotion(`/children?id=${parents.id}`)
+    getNotion(`children?id=${parents.id}`)
   );
-  if (error !== null) console.log("useGetChildren | error!!", error);
+  if (error !== null) console.log('useGetChildren | error!!', error);
   if (data) return data.data;
 };
