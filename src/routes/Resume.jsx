@@ -89,11 +89,25 @@ function ResumeCareer() {
     }
   }, [isLoading]);
 
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = 'hidden';
+    } else document.body.style.overflow = 'visible';
+  }, [modalIsOpen]);
+
   if (error !== null) console.log('error!!', error);
   return (
     <div className="notion-page">
       {career}
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+      <Modal
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(108, 126, 126, 0.7)',
+          },
+        }}
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+      >
         <ResumeDetail notion_id={notion_id} />
       </Modal>
     </div>

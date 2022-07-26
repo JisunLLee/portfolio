@@ -4,11 +4,8 @@ import Blocks from './Blocks';
 import { getNotion } from '../../Utils';
 import { TableOfContents } from './TableOfContents';
 import useAxios from '../..//API/useAxios';
-import { useRef } from 'react';
 
 export const NotionContentsForm = ({ v, parents_id }) => {
-  const ref = useRef();
-
   switch (v.type) {
     case 'divider': {
       return <hr className="notion-hr" key={v.id} />;
