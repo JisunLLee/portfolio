@@ -45,6 +45,7 @@ const Contents = ({ notion_id }) => {
   const params = 'contents?id=' + notion_id;
   let contents = 'Contents...Loading';
   const { loading, data, error } = useAxios(getNotion(params));
+
   if (!loading) contents = <Blocks data={data.data} parents_id={notion_id} />;
   if (error !== null) console.log('error!!', error);
   return <div className="notion-page">{contents}</div>;
