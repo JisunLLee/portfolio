@@ -1,23 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const DB_TYPE = (key) => {
   switch (key) {
-    case "데일리 회고 DB":
-    case "Thanks To Today":
-    case "1일 루틴":
-    case "기술 퀴즈":
-    case "오늘의 테스크": {
-      return "COLLECTION_TABLE";
+    case '데일리 회고 DB':
+    case 'Thanks To Today':
+    case '1일 루틴':
+    case '기술 퀴즈':
+    case '오늘의 테스크': {
+      return 'COLLECTION_TABLE';
     }
     default:
-      return "LIST";
+      return 'LIST';
   }
 };
 
 export const Database = ({ title, children, DetailModal }) => {
   const db_type = DB_TYPE(title);
   const contents =
-    db_type === "COLLECTION_TABLE"
+    db_type === 'COLLECTION_TABLE'
       ? collection_table({ title, children, DetailModal })
       : collection_list({ title, children, DetailModal });
 
@@ -54,28 +54,28 @@ const collection_table = ({ title, children, DetailModal }) => {
 const collection_table_header = (header) => {
   let src;
   switch (header.type) {
-    case "title": {
-      src = "aa.png";
+    case 'title': {
+      src = 'aa.png';
       break;
     }
-    case "select": {
-      src = "arrow.png";
+    case 'select': {
+      src = 'arrow.png';
       break;
     }
-    case "multi_select": {
-      src = "list.png";
+    case 'multi_select': {
+      src = 'list.png';
       break;
     }
-    case "date": {
-      src = "calender.png";
+    case 'date': {
+      src = 'calender.png';
       break;
     }
-    case "rich_text": {
-      src = "article.png";
+    case 'rich_text': {
+      src = 'article.png';
       break;
     }
     default:
-      src = "question.png";
+      src = 'question.png';
   }
   return (
     <th className="notion-table-th">
@@ -91,16 +91,16 @@ const collection_table_properties = (data) => {
   if (!data || !data[data.type]) return <td className=""></td>;
   let property;
   switch (data.type) {
-    case "title":
+    case 'title':
       property = (
         <td className="notion-table-cell notion-table-cell-title">
           {data.title[0].plain_text}
         </td>
       );
       break;
-    case "multi_select": {
+    case 'multi_select': {
       const multi_select = data.multi_select.map((multi_select) => {
-        const classname = "notion_select_item_" + multi_select.color;
+        const classname = 'notion_select_item_' + multi_select.color;
         return <span className={classname}> {multi_select.name} </span>;
       });
 
@@ -111,19 +111,19 @@ const collection_table_properties = (data) => {
       );
       break;
     }
-    case "select": {
+    case 'select': {
       const classname =
-        "notion-table-cell  notion-table-cell-select-item notion_select_item_" +
+        'notion-table-cell  notion-table-cell-select-item notion_select_item_' +
         data.select.color;
       property = <td className={classname}> {data.select.name} </td>;
       break;
     }
-    case "Date": {
+    case 'Date': {
       property = <td className="notion-table-cell "> {data.date}</td>;
       break;
     }
-    case "rich_text": {
-      let properties = "";
+    case 'rich_text': {
+      let properties = '';
       if (data.rich_text[0]) properties = data.rich_text[0].plane_text;
       property = <td className="notion-table-cell "> {properties}</td>;
       break;
@@ -135,11 +135,15 @@ const collection_table_properties = (data) => {
 };
 export const collection_list = ({ title, children, onView }) => {
   const body = children.data.map((data_) => {
-    const properties = children.header.map((header_, key) => {
-      const properties = data_.properties[header_];
-      if (properties.type !== "title")
-        return collection_list_properties(properties, key);
-    });
+    const properties =
+      children.headers !== null
+        ? children.headers.map((header_, key) => {
+            console.log('header_', header_);
+            const properties = data_.properties[header_];
+            if (properties.type !== 'title')
+              return collection_list_properties(properties, key);
+          })
+        : '';
     const row_title = collection_list_properties(data_.title, 0);
     return (
       <li
@@ -171,8 +175,8 @@ const collection_list_properties = (properties, key) => {
   let property;
 
   switch (properties.type) {
-    case "title":
-      let emoji = "";
+    case 'title':
+      let emoji = '';
       if (properties.icon !== null) emoji = properties.icon.emoji;
       property = (
         <div className="notion_colletion_list_title" key="title">
@@ -184,10 +188,10 @@ const collection_list_properties = (properties, key) => {
       );
 
       break;
-    case "multi_select": {
+    case 'multi_select': {
       const multi_select = properties.multi_select.map((multi_select) => {
         const classname =
-          "notion_select_item notion_select_item_" + multi_select.color;
+          'notion_select_item notion_select_item_' + multi_select.color;
         return (
           <p className={classname} key={multi_select.id}>
              {multi_select.name} 
@@ -204,9 +208,9 @@ const collection_list_properties = (properties, key) => {
       );
       break;
     }
-    case "select": {
+    case 'select': {
       const classname =
-        "notion_colletion_list_property_item notion_select_item notion_select_item_" +
+        'notion_colletion_list_property_item notion_select_item notion_select_item_' +
         properties.select.color;
       property = (
         <div className={classname} key={properties.id}>
@@ -215,10 +219,10 @@ const collection_list_properties = (properties, key) => {
       );
       break;
     }
-    case "date": {
-      let date = "";
+    case 'date': {
+      let date = '';
       if (properties.date.start)
-        date = properties.date.start + "→" + properties.date.end;
+        date = properties.date.start + '→' + properties.date.end;
       else date = properties.date;
 
       property = (
@@ -231,8 +235,8 @@ const collection_list_properties = (properties, key) => {
       );
       break;
     }
-    case "rich_text": {
-      let rich_text = "";
+    case 'rich_text': {
+      let rich_text = '';
 
       if (properties.rich_text[0])
         rich_text = properties.rich_text[0].plain_text;
