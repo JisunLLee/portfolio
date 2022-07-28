@@ -1,9 +1,10 @@
+
 .container {
   display: flex;
   flex-direction: column;
 }
 .first_wrap {
-  background-color: powderblue;
+  background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
   padding-bottom: 120px;
 }
 .introduce {
