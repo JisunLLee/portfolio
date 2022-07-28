@@ -29,7 +29,6 @@ export default function Resume() {
 
 const ResumeTitle = () => {
   const { loading, data, error } = useAxios(getNotion('resume/title'));
-  console.log('[ResumeTitle data]', data);
   let title = getTitle(null);
   if (!loading) title = getTitle(data.data);
   if (error !== null) console.log('error!!', error);

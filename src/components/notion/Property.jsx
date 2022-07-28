@@ -1,6 +1,9 @@
 export const getProperty = (properties) => {
   if (!properties) return;
-  const property = Object.keys(properties).filter((e) => e !== '\bsort');
+  const property = Object.keys(properties).filter(
+    (e) => e !== '\bsort' && e !== 'sort'
+  );
+  console.log('property', property);
   const property_lines = property.map((header_) => {
     if (properties[header_].type !== 'title') {
       const property_ = properties[header_];
