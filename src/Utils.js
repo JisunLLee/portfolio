@@ -1,7 +1,8 @@
 export const getNotion = (path) => {
-    console.log("URL",  process.env.REACT_APP_SERVER_URL + path)
+    const isEndSlice = /\/$/;
+    const base_url = isEndSlice.test( process.env.REACT_APP_SERVER_URL) ? process.env.REACT_APP_SERVER_URL : process.env.REACT_APP_SERVER_URL + "/";
     return {
-        url: process.env.REACT_APP_SERVER_URL + path,
+        url: base_url + path,
         headers: {
         "Content-Type": "application/json",
         },
