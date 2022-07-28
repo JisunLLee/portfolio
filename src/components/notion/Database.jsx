@@ -138,7 +138,6 @@ export const collection_list = ({ title, children, onView }) => {
     const properties =
       children.headers !== null
         ? children.headers.map((header_, key) => {
-            console.log('header_', header_);
             const properties = data_.properties[header_];
             if (properties.type !== 'title')
               return collection_list_properties(properties, key);
@@ -148,8 +147,8 @@ export const collection_list = ({ title, children, onView }) => {
     return (
       <li
         className="notion_colletion_list_tr"
-        key={data_.notion_id}
-        onClick={() => onView(data_.notion_id)}
+        key={data_.id}
+        onClick={() => onView(data_.id)}
       >
         {row_title}
         <div className="notion_colletion_list_properties">{properties}</div>

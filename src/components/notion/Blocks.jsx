@@ -3,7 +3,6 @@ import useAxios from '../../API/useAxios';
 import { getNotion } from '../../Utils';
 
 export const Blocks = ({ data, parents_id }) => {
-  console.log('blocks!!!', data);
   if (data === undefined) return <div key={parents_id}></div>;
   if (data.length === 0) return <div key={parents_id}></div>;
   let data_form;
