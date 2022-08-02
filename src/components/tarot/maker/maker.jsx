@@ -85,14 +85,19 @@ const Maker = ({ user, openModal, setUser, count, setCount }) => {
         )}
       </Modal>
       {user && tarot ? (
-        <Preview onRollDice={onRollDice} user={user} tarot={tarot}>
+        <Preview
+          onRollDice={onRollDice}
+          user={user}
+          tarot={tarot}
+          isDice={true}
+        >
           <div className={style.roll}>
             <p>
-              <span> 색상 변경 </span>{' '}
+              <span> 색상 변경 </span>
               <span onClick={() => onRollDice('COLOR')}> 🎲 </span>
             </p>
             <p>
-              <span> 전체 변경 </span>{' '}
+              <span> 전체 변경 </span>
               <span onClick={() => onRollDice('ALL')}> 🎲 </span>
             </p>
           </div>
