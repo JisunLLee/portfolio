@@ -1,7 +1,21 @@
+
 .tarots {
   position: absolute;
   display: flex;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+@media screen and (max-width: 780px) {
+
+  .tarots{
+    width: 90vw;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
 }

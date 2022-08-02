@@ -1,10 +1,12 @@
 .flipContainer,
 .container {
+  flex-shrink: 0;
   width: 280px;
   height: 500px;
   margin: auto;
   position: relative;
   perspective: 100rem;
+  transition-property: transform;
 }
 .flipContainer {
   transform: rotateY(180deg);
