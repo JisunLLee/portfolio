@@ -274,3 +274,13 @@
 .notion_select_item_gray {
   background-color: var(--notion-item-gray);
 }
+
+@media screen and (max-width: 780px) {
+
+  .notion_column{
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+  }
+  
+}
