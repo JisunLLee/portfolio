@@ -1,5 +1,7 @@
 @import url("../notion-styles.css");
-
+:root {
+  --scroll_width:100vw;
+}
 .bg-grey-opacity{
   background-color: rgba(108, 126, 126, 0.3);
 }
@@ -282,5 +284,25 @@
     align-items: center;
     width: 100vw;
   }
-  
+  .notion_colletion_list_body{
+    width: 100vw;
+    flex-wrap: nowrap;
+    overflow: scroll;
+  }
+  .notion_colletion_list_tr{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  .notion_colletion_list_properties{
+    display: flex;
+    flex-wrap: nowrap;
+
+  }
+  .notion_colletion_list_property_item{
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
 }
