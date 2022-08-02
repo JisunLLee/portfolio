@@ -20,6 +20,7 @@
   background-image: url(https://silencecatdog.s3.ap-northeast-2.amazonaws.com/tarot/cards/tarot2.PNG);
 }
 .h1 {
+  margin-top: 40px;
   font-size: 2em;
 }
 .img_wrap {
@@ -113,7 +114,9 @@
   .img {
     height: 100%;
   }
- 
+  .h1{
+    margin-top: 30px;
+  }
 }
 
 @media screen and (max-width: 390px) {
@@ -136,10 +139,20 @@
     gap: 0px;
     justify-content: flex-start;
   }
-  .h1 {
-    font-size: 1.5em;
-  }
   .random_wrap{
     margin-top: 0px;
+  }
+}
+
+@media screen and (max-height: 560px) {
+  .h1 {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-height: 460px) {
+  .h1 {
+    font-size: 1.5em;
+    margin-top: 15px;
   }
 }
