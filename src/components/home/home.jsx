@@ -16,6 +16,7 @@ const Home2 = (props) => {
   const [isHideDeveloper, setIsHideDeveloper] = useState(true);
   const [isHideSilence, setIsHideSilence] = useState(true);
   const [isHideTarot, setIsHideTarot] = useState(true);
+  const [tarotVersion, setTarotVersion] = useState(0);
   const [imgSize, setImgSize] = useState({
     imgW: 65,
     imgH: 7,
@@ -45,7 +46,7 @@ const Home2 = (props) => {
         case 'tarot':
           scroll.enter
             ? AddEventListener(setTarotIMGPosition)
-            : RemoveEventListener(setTarotIMGPosition, setIsHideTarot);
+            : RemoveEventListener(setTarotIMGPosition);
           break;
         default:
           break;
@@ -127,6 +128,7 @@ const Home2 = (props) => {
       });
     }
     if (x > 97) setIsHideTarot(false);
+    else setIsHideTarot(true);
   };
 
   return (
@@ -164,14 +166,41 @@ const Home2 = (props) => {
       </section>
       <section className={style.second_wrap}>
         {!isHideTarot && <Frame />}
+        {tarotVersion === 0 ? (
+          <Tarot type="tarot" imgSize={imgSize} ref={tarotRef} />
+        ) : tarotVersion === 1 ? (
+          <Introduce
+            type="tarot"
+            isHide={isHideTarot}
+            msg={{
+              first: '',
+              second: '침묵의!',
+              third: '냥이 댕이!',
+            }}
+            page="/"
+            ref={tarotRef}
+          />
+        ) : (
+          <Introduce
+            type="tarot"
+            isHide={isHideTarot}
+            msg={{
+              first: '후후후',
+              second: '오늘의 운세?',
+              third: '보여주지!',
+            }}
+            page="/"
+            ref={tarotRef}
+          />
+        )}
         <Tarot type="tarot" imgSize={imgSize} ref={tarotRef} />
         <Introduce
           type="silence"
           isHide={isHideSilence}
           msg={{
-            first: '쉿!',
-            second: '침묵의!',
-            third: `냥이 댕이!`,
+            first: '후후후',
+            second: '오늘의 운세?',
+            third: `보여주지!`,
           }}
           page="/"
           ref={silenceRef}
