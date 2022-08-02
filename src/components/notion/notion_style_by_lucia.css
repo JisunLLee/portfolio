@@ -278,7 +278,9 @@
 }
 
 @media screen and (max-width: 780px) {
-
+  .notion-page{
+    width: 95%;
+  }
   .notion_column{
     flex-direction: column;
     align-items: center;
