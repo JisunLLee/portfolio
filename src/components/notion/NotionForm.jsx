@@ -52,7 +52,7 @@ export const NotionContentsForm = ({ v, parents_id }) => {
     }
     case 'synced_block': {
       const synced_from_id = v.synced_block.synced_from.block_id;
-      return <BlocksComponent block_id={synced_from_id} />;
+      return <BlocksComponent key={v.id} block_id={synced_from_id} />;
     }
     case 'bulleted_list_item':
     case 'numbered_list_item': {
@@ -70,7 +70,7 @@ export const NotionContentsForm = ({ v, parents_id }) => {
       return <TableOfContents parents_id={parents_id} />;
     }
     case 'toggle': {
-      return <Toggle data={v} />;
+      return <Toggle key={v.id} data={v} />;
     }
     case 'column_list': {
       return (

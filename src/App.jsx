@@ -21,6 +21,7 @@ import { Response } from './service/response_servise';
 import Login from './components/login/login';
 import Maker from './components/tarot/maker/maker';
 import Home from './components/home/home';
+import Footer from './components/footer/footer';
 export default function App({ authService }) {
   const titleUpdater = useTitle('이지선 포트폴리오');
   Modal.setAppElement('body');
@@ -146,6 +147,7 @@ export default function App({ authService }) {
             />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );

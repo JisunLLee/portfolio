@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { style } from './NotionForm';
 
-export const Toggle = ({ data }) => {
+export const Toggle = ({ key, data }) => {
   const [isOpen, setToggle] = useState(false);
   const toggleButton = () => {
     setToggle((state) => !state);
   };
   console.log('Toggle Data', data);
   return (
-    <div className="notion_toggle_wrap ">
+    <div className="notion_toggle_wrap " key={key}>
       <ToggleHeader isOpen={isOpen} onoff={toggleButton} data={data} />
       {data.childrenForm && (
         <ToggleDetail isOpen={isOpen} body={data.childrenForm} />

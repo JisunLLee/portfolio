@@ -12,11 +12,15 @@ import { roundToTwo } from '../../Utils';
 import Frame from './frame';
 
 const Home2 = (props) => {
+  const [lastScrollTarot, setLastScrollTarot] = useState(0);
   const [isHideFirst, setIsHideFirst] = useState(false);
   const [isHideDeveloper, setIsHideDeveloper] = useState(true);
   const [isHideSilence, setIsHideSilence] = useState(true);
-  const [isHideTarot, setIsHideTarot] = useState(true);
-  const [tarotVersion, setTarotVersion] = useState(0);
+  const [isHideTarot, setIsHideTarot] = useState({
+    version: 0,
+    msg: { visible: 'hidden', effect: 'none' },
+    cover: { visible: 'visible', effect: 'none' },
+  });
   const [imgSize, setImgSize] = useState({
     imgW: 65,
     imgH: 7,
@@ -30,23 +34,28 @@ const Home2 = (props) => {
 
   const handleScrolling = useCallback((entries) => {
     entries.forEach((v) => {
-      const scroll = scrollOn(v);
       switch (v.target.classList[1]) {
         case 'first':
           v.isIntersecting ? setIsHideFirst(false) : setIsHideFirst(true);
           break;
         case 'developer':
-          v.isIntersecting
-            ? setIsHideDeveloper(false)
-            : setIsHideDeveloper(true);
-          scroll.enter &&
-            !scroll.top &&
-            RemoveEventListener(setTarotIMGPosition);
+          if (v.isIntersecting) {
+            setIsHideDeveloper(false);
+            onSetIsHideTarot(0);
+          } else {
+            setIsHideDeveloper(true);
+          }
           break;
         case 'tarot':
-          scroll.enter
-            ? AddEventListener(setTarotIMGPosition)
-            : RemoveEventListener(setTarotIMGPosition);
+          if (v.intersectionRatio < 0.13) {
+            v.isIntersecting
+              ? AddEventListener(setTarotIMGPosition)
+              : RemoveEventListener(setTarotIMGPosition);
+          }
+          break;
+        case 'silence':
+          v.isIntersecting ? setIsHideSilence(false) : setIsHideSilence(true);
+
           break;
         default:
           break;
@@ -54,7 +63,35 @@ const Home2 = (props) => {
     });
   }, []);
 
-  const scrollOn = useCallback((entry) => {
+  const onSetIsHideTarot = (version) => {
+    const hideTarot =
+      version === 0
+        ? {
+            version: 0,
+            msg: { visible: 'hidden', effect: 'none' },
+            cover: { visible: 'visible', effect: 'none' },
+          }
+        : version === 1
+        ? {
+            version: 1,
+            msg: { visible: 'visible', effect: 'fade' },
+            cover: { visible: 'visible', effect: 'none' },
+          }
+        : version === 2
+        ? {
+            version: 2,
+            msg: { visible: 'visible', effect: 'hide' },
+            cover: { visible: 'visible', effect: 'hide' },
+          }
+        : {
+            version: 3,
+            msg: { visible: 'visible', effect: 'show' },
+            cover: { visible: 'visible', effect: 'show' },
+          };
+
+    setIsHideTarot((e) => (e.version === version ? e : hideTarot));
+  };
+  const onScroll = useCallback((entry) => {
     const currentY = entry.boundingClientRect.y;
     const currentRatio = entry.intersectionRatio;
     const isIntersecting = entry.isIntersecting;
@@ -62,18 +99,18 @@ const Home2 = (props) => {
     // console.log('[currentRatio]', currentRatio);
     if (currentY < 0) {
       if (currentRatio > 0 && isIntersecting) {
-        console.log('Scrolling down enter');
+        // console.log('Scrolling down enter');
         return { top: false, enter: true };
       } else {
-        console.log('Scrolling down leave');
+        // console.log('Scrolling down leave');
         return { top: false, enter: false };
       }
-    } else if (currentY > 0) {
+    } else {
       if (currentRatio < 0.01) {
-        console.log('Scrolling up leave');
+        // console.log('Scrolling up leave');
         return { top: true, enter: false };
       } else {
-        console.log('Scrolling up enter');
+        // console.log('Scrolling up enter');
         return { top: true, enter: true };
       }
     }
@@ -91,11 +128,16 @@ const Home2 = (props) => {
     const tarotHeight = tarot.offsetHeight;
     const maxTarotTop =
       tarotHeight + first_wrap.clientHeight - tarotHeight / 5 - 120;
-
+    const nowPosition = window.scrollY;
+    const x = roundToTwo(
+      ((nowPosition - tarotTop) * 100) / (maxTarotTop - tarotTop)
+    );
     return {
       tarotTop: tarotTop,
       tarotHeight: tarotHeight,
       maxTarotTop: maxTarotTop,
+      nowPosition: nowPosition,
+      x: x,
     };
   }, []);
 
@@ -104,31 +146,37 @@ const Home2 = (props) => {
     const first = firstRef.current;
     const developer = developerRef.current;
     const tarot = tarotRef.current;
-    // const silence = silenceRef.current;
+    const silence = silenceRef.current;
     const observer = new IntersectionObserver(handleScrolling, {
-      threshold: [0.01],
+      threshold: [0.1, 0.199, 0.2],
     });
     observer.observe(first);
     observer.observe(developer);
     observer.observe(tarot);
+    observer.observe(silence);
   }, []);
 
-  const setTarotIMGPosition = () => {
-    const tarotPosition = tarotSize();
-    const { tarotTop, maxTarotTop } = tarotPosition;
-    const nowPosition = window.scrollY;
-    const x = roundToTwo(
-      ((nowPosition - tarotTop) * 100) / (maxTarotTop - tarotTop)
-    );
+  const setIsHideTarotOnObserve = (x, mousewheel) => {
+    if (x > 97 && x < 99) {
+      onSetIsHideTarot(1);
+    }
+    if (x < 97) onSetIsHideTarot(0);
+    if (x > 100) {
+      mousewheel.deltaY > 0 ? onSetIsHideTarot(2) : onSetIsHideTarot(3);
+    }
+  };
+
+  const setTarotIMGPosition = (mousewheel) => {
+    const { tarotTop, maxTarotTop, nowPosition, x } = tarotSize();
     if (nowPosition > tarotTop && nowPosition < maxTarotTop) {
       setImgSize({
         scale: -(x / 100) * 5.9 + 6.4,
-        imgW: -(x / 100) * 15 + 65,
-        imgH: -(x / 100) * -43 + 7,
+        imgW: -(x / 100) * 15 + 70,
+        imgH: -(x / 100) * -43 + 12,
       });
     }
-    if (x > 97) setIsHideTarot(false);
-    else setIsHideTarot(true);
+    setIsHideTarotOnObserve(x, mousewheel);
+    return 0;
   };
 
   return (
@@ -165,42 +213,21 @@ const Home2 = (props) => {
         </section>
       </section>
       <section className={style.second_wrap}>
-        {!isHideTarot && <Frame />}
-        {tarotVersion === 0 ? (
-          <Tarot type="tarot" imgSize={imgSize} ref={tarotRef} />
-        ) : tarotVersion === 1 ? (
-          <Introduce
-            type="tarot"
-            isHide={isHideTarot}
-            msg={{
-              first: '',
-              second: '침묵의!',
-              third: '냥이 댕이!',
-            }}
-            page="/"
-            ref={tarotRef}
-          />
-        ) : (
-          <Introduce
-            type="tarot"
-            isHide={isHideTarot}
-            msg={{
-              first: '후후후',
-              second: '오늘의 운세?',
-              third: '보여주지!',
-            }}
-            page="/"
-            ref={tarotRef}
-          />
-        )}
-        <Tarot type="tarot" imgSize={imgSize} ref={tarotRef} />
+        {isHideTarot.version !== 0 && <Frame />}
+        <Tarot
+          type="tarot"
+          imgSize={imgSize}
+          isHide={isHideTarot}
+          ref={tarotRef}
+        />
+
         <Introduce
           type="silence"
           isHide={isHideSilence}
           msg={{
-            first: '후후후',
-            second: '오늘의 운세?',
-            third: `보여주지!`,
+            first: ' 침묵의<br/>냥이댕이!',
+            second: 'SOON!',
+            third: `Comming`,
           }}
           page="/"
           ref={silenceRef}
@@ -213,9 +240,9 @@ const Home2 = (props) => {
 export default Home2;
 
 function AddEventListener(listener) {
-  window.addEventListener('scroll', listener);
+  window.addEventListener('mousewheel', (e) => listener(e));
 }
 
 function RemoveEventListener(listener) {
-  window.removeEventListener('scroll', listener);
+  window.removeEventListener('mousewheel', (e) => listener(e));
 }

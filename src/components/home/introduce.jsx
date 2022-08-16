@@ -2,9 +2,7 @@ import React from 'react';
 import { okAlert } from '../../common/alert';
 import style from './introduce.module.css';
 import { Link } from 'react-router-dom';
-const Introduce = React.forwardRef((props, ref) => {
-  const { type, isHide, msg, img, page } = props;
-
+const Introduce = React.forwardRef(({ type, isHide, msg, img, page }, ref) => {
   const onClick = () => {
     page === '/' && okAlert('만나서 반가와요!');
   };

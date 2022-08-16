@@ -96,8 +96,10 @@ const Tarot = ({ item, position, holdTime, message, data }) => {
               </h2>
             ) : (
               <h2 className={style.tag_wrap}>
-                {data.tarotTag.map((v) => (
-                  <p className={style.tag}>#{v.tag}</p>
+                {data.tarotTag.map((v, i) => (
+                  <p key={i} className={style.tag}>
+                    #{v.tag}
+                  </p>
                 ))}
               </h2>
             )}
