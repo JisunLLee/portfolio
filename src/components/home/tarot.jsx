@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import style from './tarot.module.css';
 
@@ -6,15 +6,6 @@ const Tarot = React.forwardRef(({ imgSize, isHide }, ref) => {
   const { scale, imgW, imgH } = imgSize;
   const isHideMSG = isHide.msg;
   const isHideCover = isHide.cover;
-
-  // console.log(
-  //   'isHide',
-  //   isHide.version,
-  //   isHideMSG.visible,
-  //   isHideMSG.effect,
-  //   isHideCover.visible,
-  //   isHideCover.effect
-  // );
   document.documentElement.style.setProperty('--scale', scale);
   document.documentElement.style.setProperty('--position_width', imgW + '%');
   document.documentElement.style.setProperty('--position_height', imgH + '%');

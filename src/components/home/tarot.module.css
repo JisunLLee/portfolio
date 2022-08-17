@@ -33,7 +33,7 @@ div.background {
 .nasarm_img__cover_wrap{
   position: absolute;
   display: block;
-  object-fit: contain;
+  object-fit: fill;
   width: 100%;
   height: 100%;
 }
@@ -46,7 +46,7 @@ div.background {
 
 .nasarm_img__cover_wrap{
   --x: 0;
-  --y: -300px;
+  --y: 300px;
 }
 
 .bubble_wrap{
@@ -114,8 +114,6 @@ div.background {
 }
 
 .fade {
-  --x:0;
-  --y:0;
   animation: fadein 2.5s;
   -moz-animation: fadein 2.5s; /* Firefox */
   -webkit-animation: fadein 2.5s; /* Safari and Chrome */

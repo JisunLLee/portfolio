@@ -10,9 +10,9 @@ import style from './home.module.css';
 import Tarot from './tarot';
 import { roundToTwo } from '../../Utils';
 import Frame from './frame';
+import ImgSize from '../../common/imgsize';
 
 const Home2 = (props) => {
-  const [lastScrollTarot, setLastScrollTarot] = useState(0);
   const [isHideFirst, setIsHideFirst] = useState(false);
   const [isHideDeveloper, setIsHideDeveloper] = useState(true);
   const [isHideSilence, setIsHideSilence] = useState(true);
@@ -22,7 +22,7 @@ const Home2 = (props) => {
     cover: { visible: 'visible', effect: 'none' },
   });
   const [imgSize, setImgSize] = useState({
-    imgW: 65,
+    imgW: 57,
     imgH: 7,
     scale: 6.4,
   });
@@ -165,14 +165,15 @@ const Home2 = (props) => {
       mousewheel.deltaY > 0 ? onSetIsHideTarot(2) : onSetIsHideTarot(3);
     }
   };
-
+  const tarotImg = ImgSize('IMG_0178.PNG');
+  console.log(tarotImg.originSize());
   const setTarotIMGPosition = (mousewheel) => {
     const { tarotTop, maxTarotTop, nowPosition, x } = tarotSize();
     if (nowPosition > tarotTop && nowPosition < maxTarotTop) {
       setImgSize({
         scale: -(x / 100) * 5.9 + 6.4,
-        imgW: -(x / 100) * 15 + 70,
-        imgH: -(x / 100) * -43 + 12,
+        imgW: -(x / 100) * 15 + 57,
+        imgH: -(x / 100) * -43 + 7,
       });
     }
     setIsHideTarotOnObserve(x, mousewheel);
