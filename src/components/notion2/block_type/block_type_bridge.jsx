@@ -14,7 +14,7 @@ import Toggle from './toggle';
 const BlockTypeBridge = ({ data, id }) => {
   switch (data.type) {
     case 'divider':
-      return <Divider />;
+      return <Divider key={id} />;
 
     case 'heading_1':
       return <Heading1 data={data} />;

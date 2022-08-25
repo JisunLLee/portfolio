@@ -1,15 +1,6 @@
 import React from 'react';
-import TextForm from '../text_form';
+import TextWrap from '../text_wrap';
 
-const Parpagraph = ({ data }) => {
-  const text = data.paragraph.text.map((text_, idx) => (
-    <TextForm data={text_} id={idx} />
-  ));
-
-  return (
-    <div className="notion-text" key={data.id}>
-      {text}
-    </div>
-  );
-};
+const Parpagraph = ({ data }) =>
+  data && <TextWrap data={data.paragraph} key={data.id} />;
 export default Parpagraph;

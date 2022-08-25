@@ -3,6 +3,7 @@ import ColumnList from '../components/notion2/block_type/column_list';
 import Title from '../components/notion2/title';
 import NotionService from '../service/notion_service';
 import '../components/notion2/notion-styles.css';
+import Blocks from '../components/notion2/blocks';
 const Resume2 = (props) => {
   const notion = new NotionService();
   const main_url = 'resume';
@@ -28,14 +29,9 @@ const Resume2 = (props) => {
     await onGetData('title', '제목', setTitle);
     await onGetData('contents?type=info', 'INFO', setInfo);
     await onGetData('contents?type=introduce', '소개', setIntroduce);
-    // await onGetData('contents?type=career', '경력', setCareer);
-    // await onGetData('contents?type=goodby', '마무리', setGoodby);
+    await onGetData('contents?type=career', '경력', setCareer);
+    await onGetData('contents?type=goodby', '마무리', setGoodby);
   }, []);
-
-  useEffect(async () => {
-    console.log('introduce', introduce);
-  }, [introduce]);
-
   const onGetData = async (sub_url, type, setState) =>
     await notion
       .get(main_url, sub_url, type)
@@ -50,6 +46,9 @@ const Resume2 = (props) => {
       <Title data={title} />
       <div className="notion-page">
         <ColumnList data={info} />
+        <Blocks data={introduce} />
+        <Blocks data={career} />
+        <Blocks data={goodby} />
       </div>
     </div>
   );
