@@ -22,6 +22,7 @@ import Login from './components/login/login';
 import Maker from './components/tarot/maker/maker';
 import Home from './components/home/home';
 import Footer from './components/footer/footer';
+import Resume2 from './routes/Resume2';
 export default function App({ authService }) {
   const titleUpdater = useTitle('이지선 포트폴리오');
   Modal.setAppElement('body');
@@ -129,6 +130,7 @@ export default function App({ authService }) {
             <Route path="/resume" element={<Resume />} />
             <Route path="/silence" element={<SilenceCatDog />} />
             <Route path="/silence/write" element={<SilenceWrite />} />
+            <Route path="/resume2" element={<Resume2 />} />
             <Route
               path="/tarot"
               element={
