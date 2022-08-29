@@ -26,21 +26,28 @@ const Resume2 = (props) => {
   const [goodby, setGoodby] = useState();
 
   useEffect(async () => {
-    await onGetData('title', '제목', setTitle);
-    await onGetData('contents?type=info', 'INFO', setInfo);
-    await onGetData('contents?type=introduce', '소개', setIntroduce);
-    await onGetData('contents?type=career', '경력', setCareer);
-    await onGetData('contents?type=goodby', '마무리', setGoodby);
+    await notion.onGetData(main_url, '/title', '제목', setTitle);
+    await notion.onGetData(main_url, '/contents?type=info', 'INFO', setInfo);
+    await notion.onGetData(
+      main_url,
+      '/contents?type=introduce',
+      '소개',
+      setIntroduce
+    );
+    await notion.onGetData(
+      main_url,
+      '/contents?type=career',
+      '경력',
+      setCareer
+    );
+    await notion.onGetData(
+      main_url,
+      '/contents?type=goodby',
+      '마무리',
+      setGoodby
+    );
   }, []);
-  const onGetData = async (sub_url, type, setState) =>
-    await notion
-      .get(main_url, sub_url, type)
-      .then((data) => onResultBranch(data, setState))
-      .catch((e) => console.log(e));
-  const onResultBranch = (data, setState) => {
-    data.result === '성공' && setState(data.data);
-    data.result === '실패' && setState(`${data.act}정보 불러오기 오류`);
-  };
+
   return (
     <div className="notion">
       <Title data={title} />

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DB_TYPE from './DB_TYPE';
 import CollectionListProperties from './collection_list_properties';
+import Modal from 'react-modal';
+import ResumeDetail2 from '../../../../routes/ResumeDetail2';
 const Database = ({ data }) => {
   const body = data.children;
   const title = data.child_database.title;
@@ -34,7 +36,20 @@ const CollectionTitle = ({ title }) => (
 );
 
 const CollectionListBody = ({ data }) => {
-  const onView = () => console.log('onClick');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [notion_id, setNotionId] = useState();
+
+  const onView = (id) => {
+    setModalIsOpen(true);
+    setNotionId(id);
+  };
+
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = 'hidden';
+    } else document.body.style.overflow = 'visible';
+  }, [modalIsOpen]);
+
   const body = data.data.map((body_) => {
     const properties =
       data.headers !== null
@@ -62,5 +77,12 @@ const CollectionListBody = ({ data }) => {
     );
   });
 
-  return <ul className="notion-list-view ">{body}</ul>;
+  return (
+    <ul className="notion-list-view ">
+      {body}
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <ResumeDetail2 notion_id={notion_id} />
+      </Modal>
+    </ul>
+  );
 };

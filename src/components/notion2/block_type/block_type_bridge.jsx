@@ -8,7 +8,7 @@ import ListItem from './list_item';
 import TableOfContents from './table_of_contents';
 import ColumnList from './column_list';
 import Column from './column';
-import BlocksComponent from './blocks_component';
+import SyncedBlockComponent from './synced_block_component';
 import Toggle from './toggle';
 
 const BlockTypeBridge = ({ data, id }) => {
@@ -36,7 +36,7 @@ const BlockTypeBridge = ({ data, id }) => {
 
     case 'synced_block': {
       const synced_from_id = data.synced_block.synced_from.block_id;
-      return <BlocksComponent key={data.id} block_id={synced_from_id} />;
+      return <SyncedBlockComponent key={data.id} block_id={synced_from_id} />;
     }
     case 'bulleted_list_item':
     case 'numbered_list_item':
