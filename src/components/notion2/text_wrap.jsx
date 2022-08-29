@@ -7,4 +7,10 @@ const TextWrap = ({ data, key }) => (
   </div>
 );
 
+export const TextWrapSpan = ({ data, key }) => (
+  <span className="notion-text" key={key}>
+    {data && data.text.map((text_, id) => <TextForm data={text_} id={id} />)}
+  </span>
+);
+
 export default TextWrap;

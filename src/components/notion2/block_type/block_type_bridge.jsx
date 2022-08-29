@@ -4,7 +4,7 @@ import { Heading1, Heading2, Heading3 } from './heading';
 import Parpagraph from './parpagraph';
 import Image from './image';
 import Database from './database/database';
-import ListItem from './list_item';
+import { ListItem } from './list_item';
 import TableOfContents from './table_of_contents';
 import ColumnList from './column_list';
 import Column from './column';

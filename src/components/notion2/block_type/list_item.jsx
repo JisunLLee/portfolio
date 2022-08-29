@@ -1,10 +1,21 @@
 import React from 'react';
+import { TextWrapSpan } from '../text_wrap';
 
-const ListItem = ({ data, list_type }) => (
-  <li className={list_type} key={data.id}>
-    repeatText(v[v.type].text)
-    <div className="list-item_children">data.childrenForm</div>
+export const ListItem = ({ data, list_type, children }) => (
+  <li className="notion-list" key={data.id}>
+    <TextWrapSpan data={data[list_type]} key={data.id} />
+    {children}
   </li>
 );
 
-export default ListItem;
+export const BulletedListItem = ({ id, children }) => (
+  <ul className="notion-list-disc" key={id}>
+    {children}
+  </ul>
+);
+
+export const NumberedListItem = ({ id, children }) => (
+  <ol className="notion-list-numbered " key={id}>
+    {children}
+  </ol>
+);
