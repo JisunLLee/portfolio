@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ColumnList from '../components/notion2/block_type/column_list';
 import Title from '../components/notion2/title';
 import NotionService from '../service/notion_service';
-import '../components/notion2/notion-styles.css';
+import '../components/notion2/notion_styles_l.css';
 import Blocks from '../components/notion2/blocks';
 const Resume2 = (props) => {
   const notion = new NotionService();
@@ -45,10 +45,12 @@ const Resume2 = (props) => {
     <div className="notion">
       <Title data={title} />
       <div className="notion-page">
-        <ColumnList data={info} />
-        <Blocks data={introduce} />
-        <Blocks data={career} />
-        <Blocks data={goodby} />
+        <div className="notion-page-content">
+          <ColumnList data={info} />
+          <Blocks data={introduce} />
+          <Blocks data={career} />
+          <Blocks data={goodby} />
+        </div>
       </div>
     </div>
   );

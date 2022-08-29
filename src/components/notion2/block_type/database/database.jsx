@@ -2,61 +2,65 @@ import React from 'react';
 import DB_TYPE from './DB_TYPE';
 import CollectionListProperties from './collection_list_properties';
 const Database = ({ data }) => {
-  const children = data.children;
+  const body = data.children;
   const title = data.child_database.title;
   const db_type = DB_TYPE(title);
 
   return db_type === 'COLLECTION_TABLE' ? (
-    <CollectionTable title={title} children={children} />
+    <CollectionTable title={title} body={body} />
   ) : (
-    <CollectionList title={title} children={children} />
+    <CollectionList title={title} body={body} />
   );
 };
 export default Database;
 
-const CollectionTable = ({ title, children }) => <div>CollectionTable</div>;
+const CollectionTable = ({ title, body }) => <div>CollectionTable</div>;
 
-const CollectionList = ({ title, children }) => {
+const CollectionList = ({ title, body }) => {
   return (
-    <div className="notion-page-content" key={title}>
-      <div className="notion_collection_view_block">
-        <div className="notion-table-header-placeholder "></div>
-        <CollectionTitle title={title} />
-        <hr className="notion-hr" />
-        <CollectionListBody children={children} />
-      </div>
+    <div className="notion-list-collection ">
+      <CollectionTitle title={title} />
+
+      <hr className="notion-hr" />
+      <CollectionListBody data={body} />
     </div>
   );
 };
 
 const CollectionTitle = ({ title }) => (
-  <div className="notion_collection_title">{title}</div>
+  <div className="notion-collection-header ">
+    <div className="notion-collection-header-title">{title}</div>
+  </div>
 );
-const CollectionListBody = ({ children }) => {
+
+const CollectionListBody = ({ data }) => {
   const onView = () => console.log('onClick');
-  const body = children.data.map((data_) => {
+  const body = data.data.map((body_) => {
     const properties =
-      children.headers !== null
-        ? children.headers.map((header_, key) => {
-            const properties = data_.properties[header_];
+      data.headers !== null
+        ? data.headers.map((header_, key) => {
+            const properties = body_.properties[header_];
             if (properties.type !== 'title')
               return (
-                <CollectionListProperties properties={properties} key={key} />
+                <div className="notion-list-item-property">
+                  <CollectionListProperties properties={properties} key={key} />
+                </div>
               );
           })
         : '';
 
     return (
       <li
-        className="notion_colletion_list_tr"
-        key={data_.id}
-        onClick={() => onView(data_.id)}
+        className="notion-list-item"
+        key={body_.id}
+        onClick={() => onView(body_.id)}
       >
-        <CollectionListProperties properties={data_.title} key="0" />;
-        <div className="notion_colletion_list_properties">{properties}</div>
+        <CollectionListProperties properties={body_.title} key="0" />
+
+        <div className="notion-list-item-body">{properties}</div>
       </li>
     );
   });
 
-  return <ul className="notion_colletion_list_body">{body}</ul>;
+  return <ul className="notion-list-view ">{body}</ul>;
 };

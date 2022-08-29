@@ -1,6 +1,6 @@
 .container{
     display: flex;
-    width: 100vw;
+    /* width: 100%; */
     padding: 20px;
     gap: 10px;
     background-color: pink;
