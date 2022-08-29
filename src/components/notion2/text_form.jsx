@@ -14,7 +14,6 @@ const TextForm = ({ data, id }) => {
     class_name.push('notion-' + annotations.color);
 
   const class_name_str = class_name.join(' ');
-  console.log('class_name_str', class_name_str);
   return (
     <span style={style} key={id} className={class_name_str}>
       {data.href ? (

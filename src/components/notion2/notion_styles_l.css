@@ -169,6 +169,9 @@
 .notion-brown_background {
   background-color: var(--notion-brown_background);
 }
+.notion-green_background {
+  background-color: var(--notion-teal_background);
+}
 .notion-gray_background {
   background-color: var(--notion-gray_background);
 }
@@ -195,6 +198,9 @@
 }
 .notion-brown_background_co {
   background-color: var(--notion-brown_background_co);
+}
+.notion-green_background_co {
+  background-color: var(--notion-teal_background_co);
 }
 .notion-gray_background_co {
   background-color: var(--notion-gray_background_co);
@@ -230,6 +236,7 @@
 .notion-item-gray {
   background-color: var(--notion-item-gray);
 }
+
 
 .notion {
   font-size: 16px;
