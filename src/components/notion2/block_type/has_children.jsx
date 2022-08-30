@@ -6,7 +6,7 @@ const HasChildren = ({ id, notion }) => {
   const [children, setChildren] = useState();
 
   useEffect(async () => {
-    notion.onGetData('page', `/contents?id=${id}`, '내용', setChildren);
+    notion.onGetData('page', `/contents?id=${id}`, 'HasChildren', setChildren);
   }, [id]);
   return <Blocks data={children} notion={notion} />;
 };

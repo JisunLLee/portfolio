@@ -25,7 +25,7 @@ const NotionDetail2 = ({ notion_id }) => {
       <div className="notion-page">
         <Properties properties={title && title.properties} />
         <div className="notion-page-content">
-          <Blocks data={contents} />
+          <Blocks data={contents} notion={notion} />
         </div>
       </div>
     </div>

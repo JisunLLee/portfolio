@@ -4,6 +4,7 @@ import Title from '../components/notion2/title';
 import NotionService from '../service/notion_service';
 import '../components/notion2/notion_styles_l.css';
 import Blocks from '../components/notion2/blocks';
+import Introduce from '../components/notion2/resume/introduce';
 const Resume2 = (props) => {
   const notion = new NotionService();
   const main_url = 'resume';
@@ -53,7 +54,7 @@ const Resume2 = (props) => {
       <Title data={title} />
       <div className="notion-page">
         <div className="notion-page-content">
-          <ColumnList data={info} />
+          <Introduce data={info} />
           <Blocks data={introduce} notion={notion} />
           <Blocks data={career} notion={notion} />
           <Blocks data={goodby} notion={notion} />
