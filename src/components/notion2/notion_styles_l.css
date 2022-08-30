@@ -683,6 +683,12 @@
   list-style-type: circle;
 }
 
+.notion-list-disc .notion-list-disc .notion-list-disc {  
+  list-style-type: square;
+  
+}
+
+
 .notion-list-numbered {
   list-style-type: decimal;
   padding-inline-start: 1.6em;
