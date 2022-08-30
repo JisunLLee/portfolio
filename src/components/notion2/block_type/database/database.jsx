@@ -66,7 +66,7 @@ const CollectionListBody = ({ data }) => {
 
     return (
       <li
-        className="notion-list-item"
+        className="notion-list-item notion-table-of-contents-item"
         key={body_.id}
         onClick={() => onView(body_.id)}
       >

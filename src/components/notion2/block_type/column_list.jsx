@@ -6,7 +6,7 @@ const ColumnList = ({ data }) => {
     data &&
     data.children.map((children_) => <BlockTypeBridge data={children_} />);
 
-  return <div className="notion-block notion-row notion_row"> {children} </div>;
+  return <div className="notion-row"> {children} </div>;
 };
 
 export default ColumnList;

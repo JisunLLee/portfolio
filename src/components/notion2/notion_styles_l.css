@@ -448,6 +448,10 @@
   white-space: pre-wrap;
 }
 
+.notion-block {
+  padding: 3px 2px;
+}
+
 .notion-link {
   color: inherit;
   word-break: break-word;
@@ -516,15 +520,10 @@
 
 .notion-property-select-item,
 .notion-property-multi_select-item {
-  /* display: flex;
-  align-items: center; */
   padding: 0 6px;
   border-radius: 3px;
   height: 18px;
   width: fit-content;
-  /* white-space: nowrap;
-  overflow:visible;
-  text-overflow: ellipsis; */
   line-height: 120%;
 }
 
@@ -535,6 +534,8 @@
 .notion-list-collection {
   width: 100%;
   max-width: 100%;
+
+  padding-bottom: 20px;
 }
 
 .notion-list-view {
@@ -568,7 +569,6 @@ overflow: auto;
 
 
 .notion-list-item-title {
-  /* white-space: nowrap; */
   overflow:visible;
   text-overflow: ellipsis;
   font-weight: 500;
@@ -581,15 +581,10 @@ overflow: auto;
   justify-content: flex-end;
   flex: 0 0 auto;
   overflow: visible;
-  /* width: 100%; */
-  /* overflow: scroll; */
 }
 
 .notion-list-item-property {
-  /* display: flex;
-  align-items: center; */
   overflow: visible;
-  /* width: fit-content; */
   margin-left: 14px;
   font-size: 14px;
 }
@@ -602,7 +597,6 @@ overflow: auto;
   color: var(--fg-color-3);
   font-size: 12px;
   white-space: nowrap;
-  /* overflow: hidden; */
   text-overflow: ellipsis;
 }
 
@@ -628,6 +622,23 @@ overflow: auto;
   margin-top: 0;
   margin-bottom: 0;
 }
+.notion-list-numbered .notion-list-numbered,
+.notion-list-disc .notion-list-disc {
+  padding-inline-start: 1.7em;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+.notion-list-numbered .notion-list-numbered .notion-list,
+.notion-list-disc .notion-list-disc .notion-list{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+.notion-list-disc .notion-list-disc {  
+  list-style-type: circle;
+}
+
 .notion-list-numbered {
   list-style-type: decimal;
   padding-inline-start: 1.6em;
@@ -646,4 +657,31 @@ overflow: auto;
 .notion-list li {
   padding: 6px 0;
   white-space: pre-wrap;
+}
+
+.notion-row {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  gap: 20px;
+  max-width: 100%;
+}
+
+.notion-column {
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.notion-column > *:first-child {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.notion-column > *:last-child {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
 }

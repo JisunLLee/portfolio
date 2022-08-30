@@ -16,7 +16,11 @@ const SyncedBlockComponent = ({ block_id }) => {
 
   return (
     <div>
-      {synced_block ? <Blocks data={synced_block} id={block_id} /> : 'Loading'}
+      {synced_block ? (
+        <Blocks data={synced_block} id={block_id} notion={notion} />
+      ) : (
+        'Loading'
+      )}
     </div>
   );
 };

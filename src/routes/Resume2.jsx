@@ -54,9 +54,9 @@ const Resume2 = (props) => {
       <div className="notion-page">
         <div className="notion-page-content">
           <ColumnList data={info} />
-          <Blocks data={introduce} />
-          <Blocks data={career} />
-          <Blocks data={goodby} />
+          <Blocks data={introduce} notion={notion} />
+          <Blocks data={career} notion={notion} />
+          <Blocks data={goodby} notion={notion} />
         </div>
       </div>
     </div>

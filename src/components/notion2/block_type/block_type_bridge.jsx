@@ -11,48 +11,54 @@ import Column from './column';
 import SyncedBlockComponent from './synced_block_component';
 import Toggle from './toggle';
 
-const BlockTypeBridge = ({ data, id }) => {
+const BlockTypeBridge = ({ data, id, children }) => {
   switch (data.type) {
     case 'divider':
-      return <Divider key={id} />;
+      return <Divider key={id} children={children} />;
 
     case 'heading_1':
-      return <Heading1 data={data} />;
+      return <Heading1 data={data} children={children} />;
 
     case 'heading_2':
-      return <Heading2 data={data} />;
+      return <Heading2 data={data} children={children} />;
 
     case 'heading_3':
-      return <Heading3 data={data} />;
+      return <Heading3 data={data} children={children} />;
 
     case 'paragraph':
-      return <Parpagraph data={data} />;
+      return <Parpagraph data={data} children={children} />;
 
     case 'image':
-      return <Image data={data} />;
+      return <Image data={data} children={children} />;
 
     case 'child_database':
-      return <Database data={data} />;
+      return <Database data={data} children={children} />;
 
     case 'synced_block': {
       const synced_from_id = data.synced_block.synced_from.block_id;
-      return <SyncedBlockComponent key={data.id} block_id={synced_from_id} />;
+      return (
+        <SyncedBlockComponent
+          key={data.id}
+          block_id={synced_from_id}
+          children={children}
+        />
+      );
     }
     case 'bulleted_list_item':
     case 'numbered_list_item':
-      return <ListItem data={data} list_type={data.type} />;
+      return <ListItem data={data} list_type={data.type} children={children} />;
 
     case 'table_of_contents':
-      return <TableOfContents parents_id={id} />;
+      return <TableOfContents parents_id={id} children={children} />;
 
     case 'toggle':
-      return <Toggle key={data.id} data={data} />;
+      return <Toggle key={data.id} data={data} children={children} />;
 
     case 'column_list':
-      return <ColumnList data={data} />;
+      return <ColumnList data={data} children={children} />;
 
     case 'column':
-      return <Column data={data} />;
+      return <Column data={data} children={children} />;
 
     default:
       console.log(data.type, ':', data);

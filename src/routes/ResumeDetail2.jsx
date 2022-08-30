@@ -6,14 +6,13 @@ import NotionService from '../service/notion_service';
 const ResumeDetail2 = ({ notion_id }) => {
   const [title, setTitle] = useState();
   const [contents, setContents] = useState();
-  console.log('ResumeDetail2', notion_id);
   const notion = new NotionService();
   useEffect(async () => {
     await notion.onGetData('page', `/title?id=${notion_id}`, '제목', setTitle);
     await notion.onGetData(
       'page',
       `/contents?id=${notion_id}`,
-      '제목',
+      '내용',
       setContents
     );
   }, [notion_id]);
