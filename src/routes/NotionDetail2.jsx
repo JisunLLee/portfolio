@@ -18,14 +18,13 @@ const NotionDetail2 = ({ notion_id }) => {
     );
   }, [notion_id]);
 
-  useEffect(() => console.log('NotionDetail2', title), [title]);
   return (
     <div className="notion">
       <Title data={title} />
       <div className="notion-page">
         <Properties properties={title && title.properties} />
         <div className="notion-page-content">
-          <Blocks data={contents} notion={notion} />
+          <Blocks data={contents} parents_id={notion_id} notion={notion} />
         </div>
       </div>
     </div>

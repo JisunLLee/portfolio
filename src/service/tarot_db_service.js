@@ -9,13 +9,11 @@ class TarotDB {
     }
 
     async item(item) {
-        console.log("roll item", item)
         const response = await this.connect({method:'get', url:`/tarot/dice/?item=${item}`})
                                         .catch(error=>{
                                             console.log("roll item Error",error)
                                             return error.response && error.response;
                                         })
-        console.log("roll response:", response);
         if(!response) return this.Response.serverError({act:"타로정보"});
         if(response.status === 200) return this.Response.success(response.status, response.data, "타로정보")
         if(response.status === 403) return this.Response.fail(response.status, response.data, "타로정보")
@@ -26,7 +24,7 @@ class TarotDB {
         .catch(error=>{
             return error.response && error.response;
         })
-        console.log('[TAROT_SERVICE][getTarotInfo] response:', response);
+        // console.log('[TAROT_SERVICE][getTarotInfo] response:', response);
         if(!response) return this.Response.serverError({act:"[GET]타로 정보"});
         if(response.status === 200) return this.Response.success(response.status, response.data.items[0], "[GET]타로 정보")
         if(response.status === 404) return this.Response.fail(response.status, response.data, "신규");
@@ -37,7 +35,7 @@ class TarotDB {
         .catch(error=>{
             return error.response && error.response;
         })
-        console.log('[TAROT_SERVICE][postTarotInfo] response:', response);
+        // console.log('[TAROT_SERVICE][postTarotInfo] response:', response);
         if(!response) return this.Response.serverError({act:"[POST]타로 정보"});
         if(response.status === 200) return this.Response.success(response.status, response.data.items[0], "[POST]타로 정보")
         if(response.status === 404) return this.Response.fail(response.status, response.data.items, "[POST]타로 정보")
@@ -48,7 +46,7 @@ class TarotDB {
         .catch(error=>{
             return error.response && error.response;
         })
-        console.log('[TAROT_SERVICE][putTarotInfo] response:', response);
+        // console.log('[TAROT_SERVICE][putTarotInfo] response:', response);
         if(!response) return this.Response.serverError({act:"[GET]타로 정보"});
         if(response.status === 200) return this.Response.success(response.status, response.data.items[0], "[GET]타로 정보")
         if(response.status === 404) return this.Response.fail(response.status, response.data, "신규");

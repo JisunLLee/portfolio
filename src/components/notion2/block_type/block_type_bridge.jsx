@@ -49,7 +49,7 @@ const BlockTypeBridge = ({ data, id, children }) => {
       return <ListItem data={data} list_type={data.type} children={children} />;
 
     case 'table_of_contents':
-      return <TableOfContents parents_id={id} children={children} />;
+      return <TableOfContents parents_id={id} />;
 
     case 'toggle':
       return <Toggle key={data.id} data={data} children={children} />;

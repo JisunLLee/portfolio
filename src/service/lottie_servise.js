@@ -13,7 +13,6 @@ const LottiePlay = (props) => {
 }
 
 export const DiceAni = (ref) => {
-        console.log("[DiceAni]")
         return LottiePlay({ container: ref.current, animationData: diceAni, autoplay: false });
 }
 

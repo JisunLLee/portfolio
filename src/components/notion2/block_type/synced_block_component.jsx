@@ -17,7 +17,7 @@ const SyncedBlockComponent = ({ block_id }) => {
   return (
     <div>
       {synced_block ? (
-        <Blocks data={synced_block} id={block_id} notion={notion} />
+        <Blocks data={synced_block} parents_id={block_id} notion={notion} />
       ) : (
         'Loading'
       )}

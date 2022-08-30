@@ -15,7 +15,6 @@ class NotionService {
                                             console.log(`get Notion ${main_url} Error`,error)
                                             return error.response && error.response;
                                         })
-        console.log(type, response)
         if(!response) return this.response.serverError({act:`노션 ${main_url} ${type} 정보`});
         if(response.status === 200) return this.response.success(response.status, response.data, `노션 ${main_url} ${type} 정보`)
         if(response.status === 403) return this.response.fail(response.status, response.data, `노션 ${main_url} ${type} 정보`)

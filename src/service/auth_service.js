@@ -8,7 +8,6 @@ class AuthService {
         this.Response = Response();
     }
     login(providerName){
-        console.log("providerName", providerName)
         const authProvider = providerName === "Google" ? new GoogleAuthProvider(this.firebase_app) : new GithubAuthProvider(this.firebase_app) 
         const result = signInWithPopup(this.auth, authProvider)
         .then(res => {console.log("RES:", res); return res})
@@ -39,10 +38,7 @@ class AuthService {
     //회원 탈퇴
     secession () {
         const user = this.auth.currentUser;
-        deleteUser(user).then(() => {
-            console.log("deleteUser complete");
-           return this.Response.success(200, {email : user.email}, "회원탈퇴")
-        }).catch((error) => {
+        deleteUser(user).then(() => this.Response.success(200, {email : user.email}, "회원탈퇴")).catch((error) => {
           console.log("deleteUser error", error);
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -54,7 +50,6 @@ class AuthService {
 
    async onAuthChange(userDB, setUser){
         onAuthStateChanged(this.auth, (user) => {
-            console.log("onAuthStateChanged user", user)
             user &&  userDB.signUp(this.userForm(user.reloadUserInfo)).then(res => setUser(res.data))
           });
     }
@@ -64,7 +59,6 @@ class AuthService {
     }
     //회원정보 포맷
     userForm (user) {
-        console.log("userForm! ", user)
         return {
             username : user.displayName,
             email : user.email,

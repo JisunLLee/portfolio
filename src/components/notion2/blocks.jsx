@@ -7,7 +7,7 @@ import {
   NumberedListItem,
 } from './block_type/list_item';
 
-const Blocks = ({ data, notion }) => {
+const Blocks = ({ data, notion, parents_id }) => {
   const blocks = [];
   const list = { type: '', list_item: [] };
 
@@ -44,7 +44,9 @@ const Blocks = ({ data, notion }) => {
       list.list_item = [];
     }
     data_ &&
-      blocks.push(<BlockTypeBridge data={data_} id={id} children={children} />);
+      blocks.push(
+        <BlockTypeBridge data={data_} id={parents_id} children={children} />
+      );
   };
 
   const onAddList = (data_, type, id, children) => {
