@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Blocks from '../components/notion2/blocks';
+import Properties from '../components/notion2/property/properties';
 import Title from '../components/notion2/title';
 import NotionService from '../service/notion_service';
 
@@ -16,10 +17,13 @@ const NotionDetail2 = ({ notion_id }) => {
       setContents
     );
   }, [notion_id]);
+
+  useEffect(() => console.log('NotionDetail2', title), [title]);
   return (
     <div className="notion">
       <Title data={title} />
       <div className="notion-page">
+        <Properties properties={title && title.properties} />
         <div className="notion-page-content">
           <Blocks data={contents} />
         </div>
