@@ -3,7 +3,7 @@ import Blocks from '../components/notion2/blocks';
 import Title from '../components/notion2/title';
 import NotionService from '../service/notion_service';
 
-const ResumeDetail2 = ({ notion_id }) => {
+const NotionDetail2 = ({ notion_id }) => {
   const [title, setTitle] = useState();
   const [contents, setContents] = useState();
   const notion = new NotionService();
@@ -28,4 +28,4 @@ const ResumeDetail2 = ({ notion_id }) => {
   );
 };
 
-export default ResumeDetail2;
+export default NotionDetail2;

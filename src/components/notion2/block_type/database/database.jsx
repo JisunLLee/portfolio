@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DB_TYPE from './DB_TYPE';
 import CollectionListProperties from './collection_list_properties';
 import Modal from 'react-modal';
-import ResumeDetail2 from '../../../../routes/ResumeDetail2';
+import NotionDetail2 from '../../../../routes/NotionDetail2';
 const Database = ({ data }) => {
   const body = data.children;
   const title = data.child_database.title;
@@ -81,7 +81,7 @@ const CollectionListBody = ({ data }) => {
     <ul className="notion-list-view ">
       {body}
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <ResumeDetail2 notion_id={notion_id} />
+        <NotionDetail2 notion_id={notion_id} />
       </Modal>
     </ul>
   );
