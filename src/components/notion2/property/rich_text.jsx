@@ -1,9 +1,9 @@
 import React from 'react';
 import TextWrap from '../text_wrap';
-const RichText = ({ data, key }) => {
+const RichText = ({ data, id }) => {
   return (
-    <div className="notion-property-rich_text">
-      <TextWrap data={{ text: data }} key={key} />
+    <div className="notion-property-rich_text" key={id}>
+      <TextWrap data={{ text: data }} id={id} />
     </div>
   );
 };

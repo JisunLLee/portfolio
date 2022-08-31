@@ -63,7 +63,7 @@ export default function App({ authService }) {
     throw Data;
   };
   const saveUser = async (result) => {
-    console.log('saveUser', result);
+    // console.log('saveUser', result);
     setUser(result.data);
     controlModal();
     loginAlert(result);
@@ -104,7 +104,7 @@ export default function App({ authService }) {
   useEffect(() => {
     authService.onAuthChange(userDB, setUser);
   }, [authService]);
-  console.log('user', user);
+  // console.log('user', user);
 
   return (
     <Router>

@@ -11,5 +11,4 @@ const Image = ({ data }) => (
     src={data.image.file.url}
   />
 );
-
 export default Image;

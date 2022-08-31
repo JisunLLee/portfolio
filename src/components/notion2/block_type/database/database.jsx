@@ -11,16 +11,16 @@ const Database = ({ data }) => {
   return db_type === 'COLLECTION_TABLE' ? (
     <CollectionTable title={title} body={body} />
   ) : (
-    <CollectionList title={title} body={body} />
+    <CollectionList id={data.id} title={title} body={body} />
   );
 };
 export default Database;
 
 const CollectionTable = ({ title, body }) => <div>CollectionTable</div>;
 
-const CollectionList = ({ title, body }) => {
+const CollectionList = ({ title, id, body }) => {
   return (
-    <div className="notion-list-collection ">
+    <div className="notion-list-collection " key={id}>
       <CollectionTitle title={title} />
 
       <hr className="notion-hr" />
@@ -53,12 +53,12 @@ const CollectionListBody = ({ data }) => {
   const body = data.data.map((body_) => {
     const properties =
       data.headers !== null
-        ? data.headers.map((header_, key) => {
+        ? data.headers.map((header_, id_) => {
             const properties = body_.properties[header_];
             if (properties.type !== 'title')
               return (
-                <div className="notion-list-item-property">
-                  <CollectionListProperties properties={properties} key={key} />
+                <div className="notion-list-item-property" key={id_}>
+                  <CollectionListProperties properties={properties} />
                 </div>
               );
           })
@@ -70,7 +70,7 @@ const CollectionListBody = ({ data }) => {
         key={body_.id}
         onClick={() => onView(body_.id)}
       >
-        <CollectionListProperties properties={body_.title} key="0" />
+        <CollectionListProperties properties={body_.title} />
 
         <div className="notion-list-item-body">{properties}</div>
       </li>
@@ -80,7 +80,15 @@ const CollectionListBody = ({ data }) => {
   return (
     <ul className="notion-list-view ">
       {body}
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+      <Modal
+        style={{
+          content: {
+            boxShadow: '10px 10px 5px var(--fg-color-1)',
+          },
+        }}
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+      >
         <NotionDetail2 notion_id={notion_id} />
       </Modal>
     </ul>
