@@ -48,7 +48,7 @@ const Table = ({ indent, data }) => {
 
   return (
     <div
-      className="notion_table_of_contents"
+      className="notion-table-of-contents"
       style={{ textIndent: indent + 'px' }}
       onClick={() => onScroll(data.id)}
       key={data.id}

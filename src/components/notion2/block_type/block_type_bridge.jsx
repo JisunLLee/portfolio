@@ -11,7 +11,7 @@ import Column from './column';
 import SyncedBlockComponent from './synced_block_component';
 import Toggle from './toggle';
 
-const BlockTypeBridge = ({ data, id, children }) => {
+const BlockTypeBridge = ({ data, id, children, notion }) => {
   switch (data.type) {
     case 'divider':
       return <Divider key={id} children={children} />;
@@ -32,7 +32,7 @@ const BlockTypeBridge = ({ data, id, children }) => {
       return <Image data={data} children={children} />;
 
     case 'child_database':
-      return <Database data={data} children={children} />;
+      return <Database data={data} children={children} notion={notion} />;
 
     case 'synced_block': {
       const synced_from_id = data.synced_block.synced_from.block_id;

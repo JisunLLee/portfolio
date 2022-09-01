@@ -5,12 +5,8 @@ import About from './routes/About';
 import Resume from './routes/Resume';
 import Navbar from './components/navbar/navbar';
 import { failAlert, loginAlert } from '../src/common/alert';
-import Test from './routes/Test';
-import ResumeDetail from './routes/ResumeDetail';
 import UserDB from './service/user_db_service';
 import './components/style.css';
-// import './components/notion-styles.css';
-// import './components/notion/notion_style_by_lucia.css';
 import './routes/Silence.css';
 import style from './app.module.css';
 import SilenceCatDog from './routes/SilenceCatDog';
@@ -22,7 +18,7 @@ import Login from './components/login/login';
 import Maker from './components/tarot/maker/maker';
 import Home from './components/home/home';
 import Footer from './components/footer/footer';
-import Resume2 from './routes/Resume2';
+import Study from './routes/Study';
 export default function App({ authService }) {
   const titleUpdater = useTitle('이지선 포트폴리오');
   Modal.setAppElement('body');
@@ -128,9 +124,9 @@ export default function App({ authService }) {
             <Route path="/" element={<Home user={user ? user : false} />} />
             <Route path="/about" element={<About />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="/study" element={<Study />} />
             <Route path="/silence" element={<SilenceCatDog />} />
             <Route path="/silence/write" element={<SilenceWrite />} />
-            <Route path="/resume2" element={<Resume2 />} />
             <Route
               path="/tarot"
               element={
@@ -142,10 +138,6 @@ export default function App({ authService }) {
                   setCount={setTryCount}
                 />
               }
-            />
-            <Route
-              path="/resume/detail/:notion_id"
-              element={<ResumeDetail />}
             />
           </Routes>
         </main>

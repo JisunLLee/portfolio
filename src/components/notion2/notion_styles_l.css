@@ -279,6 +279,13 @@
   font-weight: 600;
 }
   
+.notion-hr {
+  width: 100%;
+  margin: 6px 0;
+  padding: 0;
+  border-top: none;
+  border-color: var(--fg-color-0);
+}
 .notion-h {
   position: relative;
   display: inline-block;
@@ -317,6 +324,25 @@
 .notion-h:hover .notion-hash-link {
   opacity: 1;
 }
+
+.notion-image {
+  display: block;
+  width: 100%;
+  border-radius: 1px;
+}
+
+.notion-text {
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 3px 2px;
+  margin: 1px 0;
+}
+
+.notion-text:first-child {
+  margin-top: 2px;
+}
+
 
 .notion-hash-link {
   opacity: 0;
@@ -552,11 +578,17 @@
 
 .notion-property-select-item,
 .notion-property-multi_select-item {
+  display: flex;
   padding: 0 6px;
-  border-radius: 3px;
+  border-radius: 4px;
   height: 20px;
   width: fit-content;
   line-height: 120%;
+  align-items: center; 
+}
+
+.notion-property-multi_select-item {
+  margin: 0px 6px;
 }
 
 .notion-property-date {
@@ -619,6 +651,7 @@
   justify-content: flex-end;
   flex: 0 0 auto;
   overflow: visible;
+  align-content: center;
 }
 
 .notion-list-item-property {
@@ -718,6 +751,7 @@
 
 .notion-column {
   display: flex;
+  flex-direction: column;
   padding-top: 12px;
   padding-bottom: 12px;
 }
@@ -753,4 +787,23 @@
 }
 .notion-toggle > div {
   margin-left: 1.1em;
+}
+
+.notion-resume-info-image {
+  width: 160px;
+  margin-top: 2px;
+}
+
+.notion-table-of-contents {
+  color: var(--fg-color-3);
+  font-weight: 400;
+  width: 100%;
+  font-size: 14px;
+  padding: 3px;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-color: var(--bg-color-2);
+}
+.notion-table-of-contents:hover {
+  background-color: var(--fg-color-0);
 }

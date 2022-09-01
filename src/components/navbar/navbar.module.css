@@ -38,6 +38,7 @@
 .navbar__menu li:hover {
   background-color: lavenderblush;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .navbar__toggleBtn {

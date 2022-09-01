@@ -3,8 +3,16 @@ import DB_TYPE from './DB_TYPE';
 import CollectionListProperties from './collection_list_properties';
 import Modal from 'react-modal';
 import NotionDetail2 from '../../../../routes/NotionDetail2';
-const Database = ({ data }) => {
-  const body = data.children;
+
+const Database = ({ data, notion }) => {
+  console.log('Database', data);
+  const [body, setBody] = useState();
+
+  useEffect(() => {
+    data.children
+      ? setBody(data.children)
+      : getDatabase(data.id, notion, setBody);
+  }, [data]);
   const title = data.child_database.title;
   const db_type = DB_TYPE(title);
 
@@ -50,32 +58,35 @@ const CollectionListBody = ({ data }) => {
     } else document.body.style.overflow = 'visible';
   }, [modalIsOpen]);
 
-  const body = data.data.map((body_) => {
-    const properties =
-      data.headers !== null
-        ? data.headers.map((header_, id_) => {
-            const properties = body_.properties[header_];
-            if (properties.type !== 'title')
-              return (
-                <div className="notion-list-item-property" key={id_}>
-                  <CollectionListProperties properties={properties} />
-                </div>
-              );
-          })
-        : '';
+  console.log('CollectionListBody', data);
+  const body =
+    data &&
+    data.data.map((body_) => {
+      const properties =
+        data.headers !== null
+          ? data.headers.map((header_, id_) => {
+              const properties = body_.properties[header_];
+              if (properties.type !== 'title')
+                return (
+                  <div className="notion-list-item-property" key={id_}>
+                    <CollectionListProperties properties={properties} />
+                  </div>
+                );
+            })
+          : '';
 
-    return (
-      <li
-        className="notion-list-item notion-table-of-contents-item"
-        key={body_.id}
-        onClick={() => onView(body_.id)}
-      >
-        <CollectionListProperties properties={body_.title} />
+      return (
+        <li
+          className="notion-list-item notion-table-of-contents-item"
+          key={body_.id}
+          onClick={() => onView(body_.id)}
+        >
+          <CollectionListProperties properties={body_.title} />
 
-        <div className="notion-list-item-body">{properties}</div>
-      </li>
-    );
-  });
+          <div className="notion-list-item-body">{properties}</div>
+        </li>
+      );
+    });
 
   return (
     <ul className="notion-list-view ">
@@ -93,4 +104,8 @@ const CollectionListBody = ({ data }) => {
       </Modal>
     </ul>
   );
+};
+
+const getDatabase = (id, notion, setBody) => {
+  notion.onGetData('page', `/database?id=${id}`, 'HasChildren', setBody);
 };

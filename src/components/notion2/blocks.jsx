@@ -45,7 +45,12 @@ const Blocks = ({ data, notion, parents_id }) => {
     }
     data_ &&
       blocks.push(
-        <BlockTypeBridge data={data_} id={parents_id} children={children} />
+        <BlockTypeBridge
+          data={data_}
+          id={parents_id}
+          children={children}
+          notion={notion}
+        />
       );
   };
 

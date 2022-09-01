@@ -1,129 +1,69 @@
-import { useEffect, useState } from 'react';
-import '../components/notion-styles.css';
-import '../components/notion/notion_style_by_lucia.css';
-import { getNotion } from '../Utils';
-import useAxios from '../API/useAxios';
-import { Blocks, resumeInfo, resumeCareer } from '../components/notion/Blocks';
-import { getTitle } from '../components/notion/Title';
-import { collection_list } from '../components/notion/Database';
-import { Divider } from '../components/notion/NotionForm';
-import ResumeDetail from './ResumeDetail';
-import Modal from 'react-modal';
-export default function Resume() {
+import React, { useEffect, useState } from 'react';
+import Title from '../components/notion2/title';
+import NotionService from '../service/notion_service';
+import '../components/notion2/notion_styles_l.css';
+import Blocks from '../components/notion2/blocks';
+import Info from '../components/notion2/resume/info';
+import Divider from '../components/notion2/block_type/divider';
+const Resume = (props) => {
+  const notion = new NotionService();
+  const main_url = 'resume';
+  const [title, setTitle] = useState({
+    cover: {
+      external: {
+        url: '',
+      },
+    },
+    icon: {
+      emoji: '🏄🏻‍♀️',
+    },
+    title: {
+      title: [{ plain_text: '이지선 | RESUME' }],
+    },
+  });
+  const [info, setInfo] = useState();
+  const [introduce, setIntroduce] = useState();
+  const [career, setCareer] = useState();
+  const [goodby, setGoodby] = useState();
+
+  useEffect(async () => {
+    await notion.onGetData(main_url, '/title', '제목', setTitle);
+    await notion.onGetData(main_url, '/contents?type=info', 'INFO', setInfo);
+    await notion.onGetData(
+      main_url,
+      '/contents?type=introduce',
+      '소개',
+      setIntroduce
+    );
+    await notion.onGetData(
+      main_url,
+      '/contents?type=career',
+      '경력',
+      setCareer
+    );
+    await notion.onGetData(
+      main_url,
+      '/contents?type=goodby',
+      '마무리',
+      setGoodby
+    );
+  }, []);
+
   return (
     <div className="notion">
-      <div className="notion-page-content">
-        <div className="notion-app">
-          <ResumeTitle />
-          <ResumeInfo />
+      <Title data={title} />
+      <div className="notion-page">
+        <div className="notion-page-content">
+          {info && <Info data={info} />}
+          {introduce && <Blocks data={introduce} notion={notion} />}
           <Divider />
-          <ResumeIntroduce />
+          <Blocks data={career} notion={notion} />
           <Divider />
-          <ResumeCareer />
-          <ResumeGoodby />
+          <Blocks data={goodby} notion={notion} />
         </div>
       </div>
     </div>
   );
-}
-
-const ResumeTitle = () => {
-  const { loading, data, error } = useAxios(getNotion('resume/title'));
-  let title = getTitle(null);
-  if (!loading) title = getTitle(data.data);
-  if (error !== null) console.log('error!!', error);
-  return title;
 };
 
-function ResumeInfo() {
-  const { loading, data, error } = useAxios(
-    getNotion('resume/contents?type=info')
-  );
-  let info = 'Info Loading';
-  if (!loading) info = resumeInfo(data.data);
-  if (error !== null) console.log('error!!', error);
-  return <div className="notion-page">{info}</div>;
-}
-
-function ResumeIntroduce() {
-  const { loading, data, error } = useAxios(
-    getNotion('resume/contents?type=introduce')
-  );
-  let introduce = 'Introduce Loading';
-  if (!loading)
-    introduce = <Blocks data={data.data} parents_id="ResumeIntroduce" />;
-  if (error !== null) console.log('error!!', error);
-  return (
-    <div className="notion-page" key="ResumeIntroduce">
-      {introduce}
-    </div>
-  );
-}
-
-function ResumeCareer() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [notion_id, setNotionId] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  const [career, setCareer] = useState('Career Loading');
-
-  Modal.setAppElement('body');
-
-  const onView = (id) => {
-    setNotionId(id);
-    setModalIsOpen(true);
-  };
-  const { loading, data, error } = useAxios(
-    getNotion('resume/contents?type=career')
-  );
-
-  if (!loading) if (isLoading) setIsLoading(false);
-  useEffect(() => {
-    if (!isLoading) {
-      const career_data = resumeCareer(data.data);
-      const db = career_data.map((data) => {
-        const title = data.title;
-        const children = data.children;
-        return collection_list({ title, children, onView });
-      });
-      setCareer(<div>{db}</div>);
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (modalIsOpen) {
-      document.body.style.overflow = 'hidden';
-    } else document.body.style.overflow = 'visible';
-  }, [modalIsOpen]);
-
-  if (error !== null) console.log('error!!', error);
-  return (
-    <div className="notion-page">
-      {career}
-      <Modal
-        style={{
-          overlay: {
-            backgroundColor: 'rgba(108, 126, 126, 0.7)',
-          },
-        }}
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-      >
-        <ResumeDetail notion_id={notion_id} />
-      </Modal>
-    </div>
-  );
-}
-
-function ResumeGoodby() {
-  const { loading, data, error } = useAxios(
-    getNotion('resume/contents?type=goodby')
-  );
-  let goodby = 'Goodby Loading';
-  if (!loading) goodby = <Blocks data={data.data} parents_id="ResumeGoodby" />;
-  if (error !== null) console.log('error!!', error);
-  return (
-    <div className="notion-page" key="ResumeGoodby">
-      {goodby}
-    </div>
-  );
-}
+export default Resume;
