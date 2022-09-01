@@ -676,6 +676,12 @@
   text-overflow: ellipsis;
   margin: 0;
 }
+
+.notion-list-item-property .notion-property-rich_text{
+  max-width: 100px;
+  overflow: hidden;
+}
+
 .notion-property {
   width: fit-content;
   text-overflow: ellipsis;

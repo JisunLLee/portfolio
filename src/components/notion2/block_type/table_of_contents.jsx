@@ -12,6 +12,7 @@ const TableOfContents = ({ parents_id }) => {
     );
   }, [parents_id]);
 
+  console.log('TableOfContents', heading);
   return (
     <div className="" key={parents_id}>
       {heading && <TableForm data={heading} />}

@@ -24,7 +24,10 @@ const Database = ({ data, notion }) => {
 };
 export default Database;
 
-const CollectionTable = ({ title, body }) => <div>CollectionTable</div>;
+const CollectionTable = ({ title, body }) => {
+  console.log('CollectionTable', body);
+  return <div>CollectionTable</div>;
+};
 
 const CollectionList = ({ title, id, body }) => {
   return (
@@ -68,9 +71,11 @@ const CollectionListBody = ({ data }) => {
               const properties = body_.properties[header_];
               if (properties.type !== 'title')
                 return (
-                  <div className="notion-list-item-property" key={id_}>
-                    <CollectionListProperties properties={properties} />
-                  </div>
+                  properties[properties.type].length !== 0 && (
+                    <div className="notion-list-item-property" key={id_}>
+                      <CollectionListProperties properties={properties} />
+                    </div>
+                  )
                 );
             })
           : '';
@@ -83,7 +88,9 @@ const CollectionListBody = ({ data }) => {
         >
           <CollectionListProperties properties={body_.title} />
 
-          <div className="notion-list-item-body">{properties}</div>
+          {properties && (
+            <div className="notion-list-item-body">{properties}</div>
+          )}
         </li>
       );
     });

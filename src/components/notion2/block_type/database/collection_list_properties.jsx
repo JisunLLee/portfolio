@@ -66,11 +66,14 @@ const Data = ({ properties }) => (
   </div>
 );
 
-const RichText = ({ properties }) => (
-  <div className="notion-property" key={properties.id}>
-    {properties.rich_text[0] ? properties.rich_text[0].plain_text : ''}
-  </div>
-);
+const RichText = ({ properties }) =>
+  properties.rich_text[0] ? (
+    <div className="notion-property-rich_text" key={properties.id}>
+      {properties.rich_text[0].plain_text}
+    </div>
+  ) : (
+    ''
+  );
 
 const Default = ({ properties }) => (
   <div className="notion-property" key={properties.id}>
