@@ -2,7 +2,7 @@ import React from 'react';
 import BlockTypeBridge from '../block_type/block_type_bridge';
 
 const Info = ({ data }) => {
-  console.log('data', data);
+  // console.log('data', data);
   const column =
     data &&
     data.children.map((children_) => (

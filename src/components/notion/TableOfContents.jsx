@@ -5,7 +5,7 @@ const mkTableForm2 = (contents_h) => {
   if (contents_h[0]) {
     const indent = [0, 0];
     const table_of_contents = contents_h.map((data) => {
-      console.log('table_of_contents_id', data.id);
+      // console.log('table_of_contents_id', data.id);
       switch (data.type) {
         case 'heading_1': {
           indent[0] = 10;

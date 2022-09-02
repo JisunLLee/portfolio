@@ -10,7 +10,7 @@ class AuthService {
     login(providerName){
         const authProvider = providerName === "Google" ? new GoogleAuthProvider(this.firebase_app) : new GithubAuthProvider(this.firebase_app) 
         const result = signInWithPopup(this.auth, authProvider)
-        .then(res => {console.log("RES:", res); return res})
+        // .then(res => {console.log("RES:", res); return res})
             .then(res => this.userForm({...res.user, platform:providerName, ...res.user.reloadUserInfo,...res._tokenResponse}))
             .then(res => this.Response.success(201, res, providerName+" 로그인"))
             .catch((error) => {

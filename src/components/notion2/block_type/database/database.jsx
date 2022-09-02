@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import NotionDetail2 from '../../../../routes/NotionDetail2';
 
 const Database = ({ data, notion }) => {
-  console.log('Database', data);
+  // console.log('Database', data);
   const [body, setBody] = useState();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Database = ({ data, notion }) => {
 export default Database;
 
 const CollectionTable = ({ title, body }) => {
-  console.log('CollectionTable', body);
+  // console.log('CollectionTable', body);
   return <div>CollectionTable</div>;
 };
 
@@ -61,7 +61,7 @@ const CollectionListBody = ({ data }) => {
     } else document.body.style.overflow = 'visible';
   }, [modalIsOpen]);
 
-  console.log('CollectionListBody', data);
+  // console.log('CollectionListBody', data);
   const body =
     data &&
     data.data.map((body_) => {
@@ -70,12 +70,16 @@ const CollectionListBody = ({ data }) => {
           ? data.headers.map((header_, id_) => {
               const properties = body_.properties[header_];
               if (properties.type !== 'title')
-                return (
+                return properties[properties.type] ? (
                   properties[properties.type].length !== 0 && (
                     <div className="notion-list-item-property" key={id_}>
                       <CollectionListProperties properties={properties} />
                     </div>
                   )
+                ) : (
+                  <div className="notion-list-item-property" key={id_}>
+                    <CollectionListProperties properties={properties} />
+                  </div>
                 );
             })
           : '';

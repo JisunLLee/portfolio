@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TextForm = ({ data, id }) => {
   const annotations = data.annotations;
@@ -17,15 +18,38 @@ const TextForm = ({ data, id }) => {
   // console.log('TextForm', id);
   return (
     <span style={style} className={class_name_str} key={id}>
-      {data.href ? (
-        <a href={data.href} className="notion-link">
-          {data.plain_text}
-        </a>
-      ) : (
-        data.plain_text
-      )}
+      {data.href ? <CoverLink data={data} /> : data.plain_text}
     </span>
   );
 };
 
+const CoverLink = ({ data }) => {
+  const change = data.href.split('https://www.notion.so/');
+  const base_url = process.env.REACT_APP_FRONT_BASE_URL;
+  const page = myPage(data);
+  const href = page
+    ? `${base_url}${page}`
+    : change[0] === ''
+    ? `${base_url}/${change[1]}`
+    : data.href;
+
+  return (
+    <a href={href} target="_blank" className="notion-link">
+      {data.plain_text}
+    </a>
+  );
+};
+
+const myPage = (data) => {
+  switch (data) {
+    case 'http://bit.ly/3xCigF7':
+      return `/study`;
+    case 'https://www.notion.so/8db92015fc80459cb4c68c566b83dce3':
+      return `/resume`;
+    case '/8db92015fc80459cb4c68c566b83dce3':
+      return `/resume`;
+    default:
+      return false;
+  }
+};
 export default TextForm;

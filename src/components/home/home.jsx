@@ -166,7 +166,7 @@ const Home2 = (props) => {
     }
   };
   const tarotImg = ImgSize('IMG_0178.PNG');
-  console.log(tarotImg.originSize());
+  // console.log(tarotImg.originSize());
   const setTarotIMGPosition = (mousewheel) => {
     const { tarotTop, maxTarotTop, nowPosition, x } = tarotSize();
     if (nowPosition > tarotTop && nowPosition < maxTarotTop) {

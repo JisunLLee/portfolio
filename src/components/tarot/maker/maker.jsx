@@ -53,7 +53,7 @@ const Maker = ({ user, openModal, setUser, count, setCount }) => {
   };
 
   useEffect(() => {
-    console.log('MAKER count', count);
+    // console.log('MAKER count', count);
     async function startPage() {
       const isUserTarot = await getUserTarot();
       isUserTarot.result === '성공' && setTarot(isUserTarot.data);

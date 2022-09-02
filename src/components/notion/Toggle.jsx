@@ -6,7 +6,7 @@ export const Toggle = ({ key, data }) => {
   const toggleButton = () => {
     setToggle((state) => !state);
   };
-  console.log('Toggle Data', data);
+  // console.log('Toggle Data', data);
   return (
     <div className="notion_toggle_wrap " key={key}>
       <ToggleHeader isOpen={isOpen} onoff={toggleButton} data={data} />

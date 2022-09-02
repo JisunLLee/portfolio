@@ -19,6 +19,7 @@ import Maker from './components/tarot/maker/maker';
 import Home from './components/home/home';
 import Footer from './components/footer/footer';
 import Study from './routes/Study';
+import NotionPage from './routes/NotionPage';
 export default function App({ authService }) {
   const titleUpdater = useTitle('이지선 포트폴리오');
   Modal.setAppElement('body');
@@ -66,7 +67,7 @@ export default function App({ authService }) {
   };
 
   const secessionUserAlert = async (userData) => {
-    console.log('secessionUserAlert:', userData);
+    // console.log('secessionUserAlert:', userData);
     if (window.confirm(`탈퇴한 유저입니다. 다시 회원가입 하시겠습니까?`)) {
       await userDB
         .reSignUp(userData)
@@ -125,6 +126,15 @@ export default function App({ authService }) {
             <Route path="/about" element={<About />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/study" element={<Study />} />
+            <Route
+              path="/notion"
+              element={
+                <NotionPage notion_id="91509427c2f54b65b450e0d8a14bbad3" />
+              }
+            >
+              {/* <Route path=":id" element={<NotionPage />} /> */}
+            </Route>
+            <Route path="/notion/:id" element={<NotionPage />} />
             <Route path="/silence" element={<SilenceCatDog />} />
             <Route path="/silence/write" element={<SilenceWrite />} />
             <Route
