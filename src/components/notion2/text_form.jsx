@@ -26,11 +26,11 @@ const TextForm = ({ data, id }) => {
 const CoverLink = ({ data }) => {
   const change = data.href.split('https://www.notion.so/');
   const base_url = process.env.REACT_APP_FRONT_BASE_URL;
-  const page = myPage(data);
+  const page = myPage(data.href);
   const href = page
     ? `${base_url}${page}`
     : change[0] === ''
-    ? `${base_url}/${change[1]}`
+    ? `${base_url}/notion/${change[1]}`
     : data.href;
 
   return (
