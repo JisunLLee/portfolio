@@ -1,6 +1,6 @@
 import React from 'react';
 import Divider from './divider';
-import { Heading1, Heading2, Heading3 } from './heading';
+import { Heading } from './heading';
 import Parpagraph from './parpagraph';
 import Image from './image';
 import Database from './database/database';
@@ -17,13 +17,9 @@ const BlockTypeBridge = ({ data, id, children, notion }) => {
       return <Divider key={id} children={children} />;
 
     case 'heading_1':
-      return <Heading1 data={data} children={children} />;
-
     case 'heading_2':
-      return <Heading2 data={data} children={children} />;
-
     case 'heading_3':
-      return <Heading3 data={data} children={children} />;
+      return <Heading type={data.type} data={data} children={children} />;
 
     case 'paragraph':
       return <Parpagraph data={data} children={children} />;
@@ -52,7 +48,7 @@ const BlockTypeBridge = ({ data, id, children, notion }) => {
       return <TableOfContents parents_id={id} />;
 
     case 'toggle':
-      return <Toggle key={data.id} data={data} children={children} />;
+      return <Toggle id={data.id} data={data} children={children} />;
 
     case 'column_list':
       return <ColumnList data={data} children={children} />;

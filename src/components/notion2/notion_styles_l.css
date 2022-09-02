@@ -295,7 +295,7 @@
   padding: 3px 2px;
   margin-bottom: 1px;
 
-  max-width: 100%;
+  width: calc( 100% - 18px );
   white-space: pre-wrap;
   word-break: break-word;
 }
