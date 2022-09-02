@@ -10,6 +10,11 @@ import ColumnList from './column_list';
 import Column from './column';
 import SyncedBlockComponent from './synced_block_component';
 import Toggle from './toggle';
+import Code from './code';
+import Bookmark from './bookmark';
+import Quote from './quote';
+import ChildPage from './child_page';
+import Table from './table';
 
 const BlockTypeBridge = ({ data, id, children, notion }) => {
   switch (data.type) {
@@ -31,13 +36,16 @@ const BlockTypeBridge = ({ data, id, children, notion }) => {
       return <Database data={data} children={children} notion={notion} />;
 
     case 'synced_block': {
-      const synced_from_id = data.synced_block.synced_from.block_id;
-      return (
+      const synced_from_id = data.synced_block.synced_from?.block_id;
+
+      return synced_from_id ? (
         <SyncedBlockComponent
           key={data.id}
           block_id={synced_from_id}
           children={children}
         />
+      ) : (
+        <></>
       );
     }
     case 'bulleted_list_item':
@@ -56,6 +64,20 @@ const BlockTypeBridge = ({ data, id, children, notion }) => {
     case 'column':
       return <Column data={data} children={children} />;
 
+    case 'code':
+      return <Code data={data} children={children} />;
+
+    case 'bookmark':
+      return <Bookmark data={data} />;
+
+    case 'quote':
+      return <Quote data={data} />;
+
+    case 'child_page':
+      return <ChildPage data={data} />;
+
+    case 'table':
+      return <Table data={data} />;
     default:
       console.log(data.type, ':', data);
       return (

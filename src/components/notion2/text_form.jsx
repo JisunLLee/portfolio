@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const TextForm = ({ data, id }) => {
   const annotations = data.annotations;
@@ -9,6 +8,9 @@ const TextForm = ({ data, id }) => {
   style.strikethrough = annotations.strikethrough && 'line-through';
   style.textDecorationLine = annotations.underline && 'underline';
 
+  annotations.code && class_name.push('notion-inline-code');
+  annotations.strikethrough && class_name.push('notion-strikethrough');
+  annotations.underline && class_name.push('notion-inline-underscore');
   annotations.bold && class_name.push('notion-b');
   annotations.code && class_name.push('notion-inline-code');
   annotations.color !== 'default' &&

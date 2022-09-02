@@ -68,7 +68,6 @@ const Blocks = ({ data, notion, parents_id }) => {
       else onAddBlocks({ data_, id });
     }
   };
-
   data && data.forEach((data_, id) => onMakeBlocks(data_, data_.type, id));
   return <div className="notion-block">{blocks.map((v) => v)}</div>;
 };

@@ -813,3 +813,63 @@
 .notion-table-of-contents:hover {
   background-color: var(--fg-color-0);
 }
+
+.notion .notion-code {
+  font-size: 85%;
+}
+
+.notion-code {
+  width: 100%;
+  padding: 30px 16px 30px 20px;
+  margin: 4px 0;
+  border-radius: 3px;
+  tab-size: 2;
+  display: block;
+  box-sizing: border-box;
+  overflow: auto;
+  background: var(--bg-color-1);
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+}
+
+.notion-inline-code {
+  color: #eb5757;
+  padding: 0.2em 0.4em;
+  background: var(--bg-color-2);
+  border-radius: 3px;
+  font-size: 85%;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+}
+
+.notion-strikethrough {
+  text-decoration: line-through;
+}
+
+.notion-inline-underscore {
+  text-decoration: underline;
+}
+
+.notion-bookmark {
+  margin: 4px 0;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 1px solid var(--fg-color-1);
+  border-radius: 3px;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
+
+
+.notion-quote {
+  display: block;
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border-left: 3px solid currentcolor;
+  padding: 0.2em 0.9em;
+  margin: 20px 0;
+  font-size: 1.2em;
+}
