@@ -6,14 +6,14 @@ const Footer = () => {
   return (
     <section className={style.container}>
       <div className={style.button_wrap}>
-        <button>instagram</button>
-        <button>email</button>
-        <button>resume</button>
+        <button className={style.btn} />
+        <button className={style.btn} />
+        <button className={style.btn} />
       </div>
-      <div className="style.msg_wrap">
-        <div>안녕하세요</div>
-        <div>안녕하세요</div>
-        <div>안녕하세요</div>
+      <div className={style.msg_wrap}>
+        <div>이지선의 포트폴리오 페이지 입니다</div>
+        <div>만나서 반가워요!</div>
+        <div></div>
       </div>
     </section>
   );

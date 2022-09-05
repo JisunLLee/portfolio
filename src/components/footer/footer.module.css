@@ -1,11 +1,11 @@
 .container{
     display: flex;
-    /* width: 100%; */
     padding: 20px;
     gap: 10px;
     background-color: pink;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .button_wrap{
@@ -18,6 +18,23 @@
 .msg_wrap {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
+
+.button_wrap .btn {
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+}
+
+.button_wrap :nth-child(1){
+    background: url('/public/instagram.PNG');
+}
+
+.button_wrap :nth-child(2){
+    background: url('/public/email.PNG');
+}
+.button_wrap :nth-child(3){
+    background: url('/public/resume.PNG');
+}
