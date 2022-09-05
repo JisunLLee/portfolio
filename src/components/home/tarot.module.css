@@ -202,3 +202,64 @@ div.background {
     transform: translate(0, 0);
   }
 }
+
+
+
+@media screen and (max-width: 780px) {
+
+  .contants_wrap {
+    position: relative;
+    align-items: end;
+  }
+
+  .bubble_wrap {
+    position: absolute;
+    height: 310px;
+    top: 0%;
+    left: 0%;
+    display:flex;
+    flex-direction: column-reverse;
+    align-items:center;
+    justify-self: center;
+    gap: 15px;
+    padding-bottom: 15px;
+  }
+
+  .bubble {
+    --x: 0;
+    --y: -200px;
+    height: 50px;
+    align-self: center;
+  }
+
+  .nasarm_wrap{ 
+  }
+
+  .bubble:after {
+    border-top: 10px solid pink;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    right: 50%;
+  }
+
+  .show.third {
+    animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s; /* Firefox */
+    -webkit-animation: fadein 0.5s; /* Safari and Chrome */
+    -o-animation: fadein 0.5s; /* Opera */
+    animation-fill-mode: forwards;
+  }
+
+  .second.show{
+    animation: fadein 1.5s;
+    -moz-animation: fadein 1.5s; /* Firefox */
+    -webkit-animation: fadein 1.5s; /* Safari and Chrome */
+    -o-animation: fadein 1.5s; /* Opera */
+    animation-fill-mode: forwards;
+  }
+}
