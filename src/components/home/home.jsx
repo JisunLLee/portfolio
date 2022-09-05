@@ -22,7 +22,7 @@ const Home2 = (props) => {
     cover: { visible: 'visible', effect: 'none' },
   });
   const [imgSize, setImgSize] = useState({
-    imgW: 57,
+    imgW: 65,
     imgH: 7,
     scale: 6.4,
   });
@@ -172,7 +172,7 @@ const Home2 = (props) => {
     if (nowPosition > tarotTop && nowPosition < maxTarotTop) {
       setImgSize({
         scale: -(x / 100) * 5.9 + 6.4,
-        imgW: -(x / 100) * 15 + 57,
+        imgW: -(x / 100) * 15 + 65,
         imgH: -(x / 100) * -43 + 7,
       });
     }
