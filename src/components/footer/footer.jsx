@@ -4,7 +4,6 @@ import style from './footer.module.css';
 
 const Footer = () => {
   const onClick = (type) => {
-    console.log('onClick', type);
     window.location.href = getSite(type);
   };
 

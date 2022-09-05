@@ -10,7 +10,7 @@ import style from './home.module.css';
 import Tarot from './tarot';
 import { roundToTwo } from '../../Utils';
 import Frame from './frame';
-import ImgSize from '../../common/imgsize';
+// import ImgSize from '../../common/imgsize';
 
 const Home2 = (props) => {
   const [isHideFirst, setIsHideFirst] = useState(false);
@@ -165,7 +165,7 @@ const Home2 = (props) => {
       mousewheel.deltaY > 0 ? onSetIsHideTarot(2) : onSetIsHideTarot(3);
     }
   };
-  const tarotImg = ImgSize('IMG_0178.PNG');
+  // const tarotImg = ImgSize('IMG_0178.PNG');
   // console.log(tarotImg.originSize());
   const setTarotIMGPosition = (mousewheel) => {
     const { tarotTop, maxTarotTop, nowPosition, x } = tarotSize();
