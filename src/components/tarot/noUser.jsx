@@ -1,8 +1,6 @@
 import useConfirm from '../../API/useConfirm';
 const NoUser = (openModal, setUser, count, setCount, navigate) =>
-  count < 3
-    ? Notice(count, openModal, setUser, setCount)
-    : GoBack(setCount, navigate);
+  count < 3 ? Notice(count, openModal, setUser, setCount) : GoBack(navigate);
 
 const Notice = (count, openModal, setUser, setCount) =>
   useConfirm(
@@ -13,7 +11,7 @@ const Notice = (count, openModal, setUser, setCount) =>
     () => setCount((prv) => prv + 1)
   );
 
-const GoBack = (setCount, navigate) => {
+const GoBack = (navigate) => {
   navigate(-1);
 };
 
