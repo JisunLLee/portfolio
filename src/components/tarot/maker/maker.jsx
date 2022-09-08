@@ -16,7 +16,7 @@ const Maker = ({ user, openModal, setUser, count, setCount }) => {
   const [loading, setLoading] = useState(true);
   const tarotDB = new TarotDB();
   const navigate = useNavigate();
-  const onNoUser = () => NoUser(openModal, setUser, count, setCount);
+  const onNoUser = () => NoUser(openModal, setUser, count, setCount, navigate);
   const controlModal = () => {
     setIsModalOpen((prv) => !prv);
   };
@@ -64,14 +64,9 @@ const Maker = ({ user, openModal, setUser, count, setCount }) => {
         (await postUserTarot());
     }
 
-    const goBack = () => {
-      navigate(-1);
-    };
-
     user && user === 'TESTER' ? onRollDice('ALL') : startPage();
     if (!user && count) {
-      if (count < 3) onNoUser();
-      else goBack();
+      onNoUser();
     }
   }, [user, count]);
 
@@ -81,7 +76,7 @@ const Maker = ({ user, openModal, setUser, count, setCount }) => {
 
   return (
     <div className={style.container}>
-      {loading && <HomeLoading />}
+      {user && loading && <HomeLoading />}
       <Modal
         className={style.tarots}
         isOpen={isModalOpen}
