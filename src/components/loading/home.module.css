@@ -1,11 +1,12 @@
 
 .container {
+    z-index: 1;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    min-height: calc(100vh - 129px);
+    min-height: calc(100vh);
     background-color: rgba(255, 241, 243, 0.7);
 }
 
