@@ -10,6 +10,7 @@ const HomeLoading = () => {
   const circle = (prv) => (prv === 4 ? 1 : prv + 1);
 
   useEffect(() => {
+    let isComponentMounted = true;
     setIsShow(true);
     const setCircle = setTimeout(() => {
       setAni1((prv) => circle(prv));
@@ -18,11 +19,15 @@ const HomeLoading = () => {
       setAni4((prv) => circle(prv));
     }, 2000);
 
-    const setMainShow = setTimeout(() => {
-      setIsShow(false);
-    }, 1500);
+    const setMainShow = setTimeout(
+      () => isComponentMounted && setIsShow(false),
+      1500
+    );
 
-    return () => clearTimeout(setCircle, setMainShow);
+    return () => {
+      clearTimeout(setCircle, setMainShow);
+      isComponentMounted = false;
+    };
   }, [ani1]);
 
   return (
