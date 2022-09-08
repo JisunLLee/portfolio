@@ -5,6 +5,7 @@ import '../components/notion2/notion_styles_l.css';
 import Blocks from '../components/notion2/blocks';
 import Info from '../components/notion2/resume/info';
 import Divider from '../components/notion2/block_type/divider';
+import HomeLoading from '../components/loading/home';
 const Resume = (props) => {
   const notion = new NotionService();
   const main_url = 'resume';
@@ -25,6 +26,7 @@ const Resume = (props) => {
   const [introduce, setIntroduce] = useState();
   const [career, setCareer] = useState();
   const [goodby, setGoodby] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(async () => {
     await notion.onGetData(main_url, '/title', '제목', setTitle);
@@ -49,8 +51,12 @@ const Resume = (props) => {
     );
   }, []);
 
+  useEffect(() => {
+    career && loading && setLoading(false);
+  }, [career]);
   return (
-    <div className="notion">
+    <div className="notion container">
+      {loading && <HomeLoading />}
       <Title data={title} />
       <div className="notion-page">
         <div className="notion-page-content">

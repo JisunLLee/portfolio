@@ -20,6 +20,7 @@ import Home from './components/home/home';
 import Footer from './components/footer/footer';
 import Study from './routes/Study';
 import NotionPage from './routes/NotionPage';
+import Test from './routes/Test';
 export default function App({ authService }) {
   const titleUpdater = useTitle('이지선 포트폴리오');
   Modal.setAppElement('body');
@@ -131,9 +132,7 @@ export default function App({ authService }) {
               element={
                 <NotionPage notion_id="91509427c2f54b65b450e0d8a14bbad3" />
               }
-            >
-              {/* <Route path=":id" element={<NotionPage />} /> */}
-            </Route>
+            ></Route>
             <Route path="/notion/:id" element={<NotionPage />} />
             <Route path="/silence" element={<SilenceCatDog />} />
             <Route path="/silence/write" element={<SilenceWrite />} />
@@ -149,6 +148,7 @@ export default function App({ authService }) {
                 />
               }
             />
+            <Route path="/test" element={<Test />} />
           </Routes>
         </main>
         <Footer />

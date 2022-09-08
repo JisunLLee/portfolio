@@ -7,11 +7,13 @@ import style from './maker.module.css';
 import RandomBoard from '../board/board';
 import NoUser from '../noUser';
 import { useNavigate } from 'react-router-dom';
+import HomeLoading from '../../loading/home';
 Modal.setAppElement('body');
 const Maker = ({ user, openModal, setUser, count, setCount }) => {
   const [tarot, setTarot] = useState(false);
   const [rollItem, setRollItem] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const tarotDB = new TarotDB();
   const navigate = useNavigate();
   const onNoUser = () => NoUser(openModal, setUser, count, setCount);
@@ -73,8 +75,13 @@ const Maker = ({ user, openModal, setUser, count, setCount }) => {
     }
   }, [user, count]);
 
+  useEffect(() => {
+    tarot && loading && setLoading(false);
+  }, [tarot]);
+
   return (
     <div className={style.container}>
+      {loading && <HomeLoading />}
       <Modal
         className={style.tarots}
         isOpen={isModalOpen}

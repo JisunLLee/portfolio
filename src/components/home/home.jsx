@@ -10,9 +10,11 @@ import style from './home.module.css';
 import Tarot from './tarot';
 import { roundToTwo } from '../../Utils';
 import Frame from './frame';
+import HomeLoading from '../loading/home';
 // import ImgSize from '../../common/imgsize';
 
 const Home2 = (props) => {
+  const [loading, setLoading] = useState(true);
   const [isHideFirst, setIsHideFirst] = useState(false);
   const [isHideDeveloper, setIsHideDeveloper] = useState(true);
   const [isHideSilence, setIsHideSilence] = useState(true);
@@ -118,6 +120,7 @@ const Home2 = (props) => {
 
   useEffect(() => {
     setObserve();
+    setLoading(false);
   }, []);
 
   const tarotSize = useCallback(() => {
@@ -182,6 +185,7 @@ const Home2 = (props) => {
 
   return (
     <div className={`${style.container}`}>
+      {loading && <HomeLoading />}
       <section ref={first_wrapRef} className={style.first_wrap}>
         <div className={style.introduce}>
           <h5>WELCOME TO JISUN'S SPACE!</h5>

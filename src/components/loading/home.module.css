@@ -1,0 +1,226 @@
+
+.container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    min-height: calc(100vh - 129px);
+}
+
+.showbox {
+    display: flex;
+    height: 180px;
+    width: 180px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30%;
+    background-color: rgb(255, 192, 203, 0.3);
+}
+
+.innerbox {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.study, .drawing, .climbing, .coding{
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    bottom: calc(0% - 10px);
+    left: calc(50% - 10px);
+}
+
+.study {
+    background:no-repeat url(../../../public/laptop.png) center rgb(118, 106, 219);
+    background-size: 60%;
+}
+.drawing{
+    background:no-repeat url(../../../public/pencil.png) center rgb(172, 117, 223);
+    background-size: 60%;
+}
+.climbing{
+    background:no-repeat url(../../../public/climbing.png) center rgb(233, 226, 106);
+    background-size: 60%;
+}
+.coding{
+    background:no-repeat url(../../../public/code.png) center rgb(117, 223, 147);
+    background-size: 60%;
+}
+.blue{
+    border: 5px solid blue;
+}
+.green{
+    border: 5px solid green;
+}
+
+.circle1 {
+    animation: circle1 1s linear forwards;
+    -webkit-animation:  circle1 1s linear forwards;
+    -moz-animation: circle1 1s linear forwards;
+    -ms-animation: circle1 1s linear forwards;
+    -o-animation: circle1 1s linear forwards;
+}
+.circle2 {
+    animation: circle2 1s linear forwards ;
+    -webkit-animation:  circle2 1s linear forwards;
+    -moz-animation: circle2 1s linear forwards;
+    -ms-animation: circle2 1s linear forwards;
+    -o-animation: circle2 1s linear forwards;
+}
+
+.circle3 {
+    animation: circle3 1s linear forwards ;
+    -webkit-animation:  circle3 1s linear forwards;
+    -moz-animation: circle3 1s linear forwards;
+    -ms-animation: circle3 1s linear forwards;
+    -o-animation: circle3 1s linear forwards;
+}
+
+.circle4 {
+    animation: circle4 1s linear forwards ;
+    -webkit-animation:  circle4 1s linear forwards;
+    -moz-animation: circle4 1s linear forwards;
+    -ms-animation: circle4 1s linear forwards;
+    -o-animation: circle4 1s linear forwards;
+}
+
+@-webkit-keyframes circle1 {
+    from { -webkit-transform: rotate(180deg) translateX(60px) rotate(-180deg); }
+    to   { 
+        -webkit-transform: rotate(270deg) translateX(40px) rotate(-270deg); 
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@-moz-keyframes circle1 {
+    from { -moz-transform: rotate(180deg) translateX(60px) rotate(-180deg); }
+    to   { 
+        -moz-transform: rotate(270deg) translateX(40px) rotate(-270deg); 
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@-o-keyframes circle1 {
+    from { -o-transform: rotate(180deg) translateX(60px) rotate(-180deg); }
+    to   { 
+        -o-transform: rotate(270deg) translateX(40px) rotate(-270deg); 
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@keyframes circle1 {
+    from { transform: rotate(180deg) translateX(60px) rotate(-180deg);}
+    to   { 
+        transform: rotate(270deg) translateX(40px) rotate(-270deg);
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@-webkit-keyframes circle2 {
+    from { 
+        -webkit-transform: rotate(270deg) translateX(40px) rotate(-270deg); 
+        width: 40px;
+        height: 40px;
+    }
+    to   { 
+        -webkit-transform: rotate(360deg) translateX(60px) rotate(-360deg);
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@-moz-keyframes circle2 {
+    from { 
+        -moz-transform: rotate(270deg) translateX(40px) rotate(-270deg);
+        width: 40px;
+        height: 40px;
+    }
+    to   { 
+        -moz-transform: rotate(360deg) translateX(60px) rotate(-360deg);
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@-o-keyframes circle2 {
+    from { 
+        -o-transform: rotate(270deg) translateX(40px) rotate(-270deg); 
+        width: 40px;
+        height: 40px;
+    }
+    to   {
+         -o-transform: rotate(360deg) translateX(60px) rotate(-360deg); 
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@keyframes circle2 {
+    from { 
+        transform: rotate(270deg) translateX(40px) rotate(-270deg);
+        width: 40px;
+        height: 40px;
+    }
+    to   { 
+        transform: rotate(360deg) translateX(60px) rotate(-360deg);
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@-webkit-keyframes circle3 {
+    from { -webkit-transform:rotate(0deg) translateX(60px) rotate(-0deg); }
+    to   { -webkit-transform:rotate(90deg) translateX(50px) rotate(-90deg);}
+}
+
+@-moz-keyframes circle3 {
+    from { -moz-transform:rotate(0deg) translateX(60px) rotate(-0deg);}
+    to   { -moz-transform:rotate(90deg) translateX(50px) rotate(-90deg);}
+}
+
+@-o-keyframes circle3 {
+    from { -o-transform: rotate(0deg) translateX(60px) rotate(-0deg);}
+    to   { -o-transform: rotate(90deg) translateX(50px) rotate(-90deg); }
+}
+
+@keyframes circle3 {
+    from { transform: rotate(0deg) translateX(60px) rotate(-0deg);}
+    to   { transform: rotate(90deg) translateX(50px) rotate(-90deg);}
+}
+
+@-webkit-keyframes circle4 {
+    from { -webkit-transform: rotate(90deg) translateX(50px) rotate(-90deg); }
+    to   { -webkit-transform: rotate(180deg) translateX(60px) rotate(-180deg);}
+}
+
+@-moz-keyframes circle4 {
+    from { -moz-transform: rotate(90deg) translateX(50px) rotate(-90deg);}
+    to   { -moz-transform: rotate(180deg) translateX(60px) rotate(-180deg);}
+}
+
+@-o-keyframes circle4 {
+    from { -o-transform: rotate(90deg) translateX(50px) rotate(-90deg);}
+    to   { -o-transform: rotate(180deg) translateX(60px) rotate(-180deg);}
+}
+
+@keyframes circle4 {
+    from { transform: rotate(90deg) translateX(50px) rotate(-90deg);}
+    to   { transform: rotate(180deg) translateX(60px) rotate(-180deg);}
+}
+
+@keyframes bigger {
+    from { }
+    to   {     
+        width: 40px;
+        height: 40px; }
+}
+
