@@ -15,7 +15,6 @@ const Notice = (count, openModal, setUser, setCount) =>
 
 const GoBack = (setCount, navigate) => {
   navigate(-1);
-  setCount(1);
 };
 
 export default NoUser;

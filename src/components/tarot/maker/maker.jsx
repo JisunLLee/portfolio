@@ -74,6 +74,9 @@ const Maker = ({ user, openModal, setUser, count, setCount }) => {
     tarot && loading && setLoading(false);
   }, [tarot]);
 
+  useEffect(() => {
+    return () => setCount(1);
+  }, []);
   return (
     <div className={style.container}>
       {user && loading && <HomeLoading />}
