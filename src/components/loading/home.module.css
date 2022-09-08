@@ -6,24 +6,24 @@
     align-items: center;
     width: 100vw;
     min-height: calc(100vh - 129px);
+    background-color: rgba(255, 241, 243, 0.7);
 }
 
 .showbox {
+    position: relative;
     display: flex;
-    height: 180px;
-    width: 180px;
+    height: 80px;
+    width: 200px;
     justify-content: center;
-    align-items: center;
-    border-radius: 30%;
-    background-color: rgb(255, 192, 203, 0.3);
+    align-items: flex-end;
+    overflow: hidden;
 }
 
 .innerbox {
-    position: relative;
-    width: 100%;
-    height: 80px;
-    margin-bottom: 30px;
-    overflow: hidden;
+    height: 55px;
+    width: 120px;
+    border-radius: 80px 80px 0px 0px;
+    background-color: rgb(255, 192, 203, 0.6);
 }
 
 .study, .drawing, .climbing, .coding{
@@ -32,7 +32,27 @@
     width: 30px;
     height: 30px;
     bottom: calc(0% - 10px);
-    left: calc(50% - 10px);
+    left: calc(50% - 15px);
+}
+
+.show,
+.hide {
+    position: absolute;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    top: calc(0% + 5px);
+    left: calc(50% - 20px);
+    border: 5px solid pink;
+}
+
+.show {
+    animation: show 1s linear forwards;
+    animation-timing-function: step-end;
+}
+
+.hide {
+    animation: hide 1s linear forwards;
 }
 
 .study {
@@ -50,12 +70,6 @@
 .coding{
     background:no-repeat url(../../../public/code.png) center rgb(117, 223, 147);
     background-size: 60%;
-}
-.blue{
-    border: 5px solid blue;
-}
-.green{
-    border: 5px solid green;
 }
 
 .circle1 {
@@ -217,10 +231,13 @@
     to   { transform: rotate(180deg) translateX(60px) rotate(-180deg);}
 }
 
-@keyframes bigger {
-    from { }
-    to   {     
-        width: 40px;
-        height: 40px; }
+@keyframes show {
+    from { opacity: 0; }
+    to   { opacity: 100; }
 }
+@keyframes hide {
+    from { opacity: 100; }
+    to   { opacity: 0; }
+}
+
 
