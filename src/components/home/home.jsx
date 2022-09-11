@@ -211,7 +211,7 @@ const Home2 = (props) => {
               second: '봐주셔유',
               third: `CLICK<br/>ME`,
             }}
-            img="IMG_0378.PNG"
+            img="IMG_0378.svg"
             ref={developerRef}
             page="/resume"
           />

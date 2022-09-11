@@ -20,7 +20,7 @@ const Introduce = React.forwardRef(({ type, isHide, msg, img, page }, ref) => {
         ))}
       </div>
       <div className={style.nasarm_wrap} onClick={onClick}>
-        <img className={style.nasarm_img} src="IMG_0178.PNG" />
+        <img className={style.nasarm_img} src="IMG_0178.svg" />
         <div
           className={`${style.nasarm_img__cover} ${
             isHide ? style.hide : style.show

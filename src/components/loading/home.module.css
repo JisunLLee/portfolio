@@ -57,19 +57,19 @@
 }
 
 .study {
-    background:no-repeat url(../../../public/laptop.png) center rgb(118, 106, 219);
+    background:no-repeat url(../../../public/laptop.svg) center rgb(118, 106, 219);
     background-size: 60%;
 }
 .drawing{
-    background:no-repeat url(../../../public/pencil.png) center rgb(172, 117, 223);
+    background:no-repeat url(../../../public/pencil.svg) center rgb(172, 117, 223);
     background-size: 60%;
 }
 .climbing{
-    background:no-repeat url(../../../public/climbing.png) center rgb(233, 226, 106);
+    background:no-repeat url(../../../public/climbing.svg) center rgb(233, 226, 106);
     background-size: 60%;
 }
 .coding{
-    background:no-repeat url(../../../public/code.png) center rgb(117, 223, 147);
+    background:no-repeat url(../../../public/code.svg) center rgb(117, 223, 147);
     background-size: 60%;
 }
 

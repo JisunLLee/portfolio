@@ -102,11 +102,11 @@
   }
   .navbar__toggleBtn
   .show {
-    content: url(../../../public/close.png);
+    content: url(../../../public/close.svg);
   }
   .navbar__toggleBtn
   .hide {
-    content: url(../../../public/menu.png);
+    content: url(../../../public/menu.svg);
   }
   .navbar__login {
     padding-left: 0px;

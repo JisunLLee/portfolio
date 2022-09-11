@@ -14,11 +14,11 @@ const PropertyHeader = ({ header }) => {
 };
 
 const property_header_icon = {
-  title: 'aa.png',
-  select: 'arrow.png',
-  multi_select: 'list.png',
-  date: 'calender.png',
-  rich_text: 'article.png',
-  default: 'question.png',
+  title: 'aa.svg',
+  select: 'arrow.svg',
+  multi_select: 'list.svg',
+  date: 'calender.svg',
+  rich_text: 'article.svg',
+  default: 'question.svg',
 };
 export default PropertyHeader;

@@ -55,27 +55,27 @@ const collection_table_header = (header) => {
   let src;
   switch (header.type) {
     case 'title': {
-      src = 'aa.png';
+      src = 'aa.svg';
       break;
     }
     case 'select': {
-      src = 'arrow.png';
+      src = 'arrow.svg';
       break;
     }
     case 'multi_select': {
-      src = 'list.png';
+      src = 'list.svg';
       break;
     }
     case 'date': {
-      src = 'calender.png';
+      src = 'calender.svg';
       break;
     }
     case 'rich_text': {
-      src = 'article.png';
+      src = 'article.svg';
       break;
     }
     default:
-      src = 'question.png';
+      src = 'question.svg';
   }
   return (
     <th className="notion-table-th">

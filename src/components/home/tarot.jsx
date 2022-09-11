@@ -15,7 +15,7 @@ const Tarot = React.forwardRef(({ imgSize, isHide }, ref) => {
         <div className={style.background}>
           <div className={style.contants_wrap}>
             <div className={style.nasarm_wrap}>
-              <img className={style.nasarm_img} src="IMG_0178.PNG" />
+              <img className={style.nasarm_img} src="IMG_0178.svg" />
               <div
                 className={`${style.nasarm_img__cover_wrap} ${
                   style[isHideCover.visible]
@@ -24,7 +24,7 @@ const Tarot = React.forwardRef(({ imgSize, isHide }, ref) => {
                 <Link to="tarot">
                   <img
                     className={`${style.nasarm_img__cover}   `}
-                    src="IMG_0380.PNG"
+                    src="IMG_0380.svg"
                   />
                 </Link>
               </div>
