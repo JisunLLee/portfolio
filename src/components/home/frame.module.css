@@ -9,10 +9,10 @@
   position: -webkit-sticky;
   margin-left: auto;
   margin-right: auto;
-  top: 15%; /* required */
+  top: 15%;
   width: 90vw;
   max-width: 1200px;
-  height: 65vh;
+  height: 70vh;
   border: 5px solid pink;
 }
 .browser {

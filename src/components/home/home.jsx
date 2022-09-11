@@ -127,7 +127,7 @@ const Home2 = (props) => {
     const first_wrap = first_wrapRef.current;
     const tarot = tarotRef.current;
 
-    const tarotTop = first_wrap.clientHeight + 120 + 48;
+    const tarotTop = first_wrap?.clientHeight + 120 + 48;
     const tarotHeight = tarot.offsetHeight;
     const maxTarotTop =
       tarotHeight + first_wrap.clientHeight - tarotHeight / 5 - 120;
