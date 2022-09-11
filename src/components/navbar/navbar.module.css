@@ -86,6 +86,7 @@
   .navbar__menu li {
     width: 100%;
     text-align: center;
+    padding-left: 0;
   }
   
   .navbar__toggleBtn {
@@ -106,9 +107,10 @@
   .navbar__toggleBtn
   .hide {
     content: url(../../../public/menu.png);
-
-    
   }
-
+  .navbar__login {
+    padding-left: 0px;
+  }
+  
 
 }
