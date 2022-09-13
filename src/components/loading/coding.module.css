@@ -1,0 +1,42 @@
+.container {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    width: 100px;
+    height: 100px;
+}
+
+.sub {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+}
+
+.sub1 {
+    top: calc(50% - 90px);
+    left: calc(50% - 100px);
+}
+
+.sub2 {
+    top: calc(50% - 90px);
+    left: calc(50% + 30px);
+}
+
+.sub3 {
+    top: calc(50% - 120px);
+    left: calc(50% - 30px);
+}
+
+.show {
+    visibility: visible;
+}
+
+.hide {
+    visibility: hidden;
+}

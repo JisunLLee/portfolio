@@ -1,4 +1,4 @@
-import HomeLoading from '../components/loading/home';
+import CodingLoading from '../components/loading/coding';
 
 export default function Test() {
   return (
@@ -9,7 +9,7 @@ export default function Test() {
         height: 'calc(100vh - 129px)',
       }}
     >
-      <HomeLoading />
+      <CodingLoading />
     </div>
   );
 }
