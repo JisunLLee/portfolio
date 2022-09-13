@@ -5,7 +5,7 @@ import '../components/notion2/notion_styles_l.css';
 import Blocks from '../components/notion2/blocks';
 import Info from '../components/notion2/resume/info';
 import Divider from '../components/notion2/block_type/divider';
-import HomeLoading from '../components/loading/home';
+import CodingLoading from '../components/loading/coding';
 const Resume = (props) => {
   const notion = new NotionService();
   const main_url = 'resume';
@@ -56,7 +56,7 @@ const Resume = (props) => {
   }, [career]);
   return (
     <div className="notion container">
-      {loading && <HomeLoading />}
+      {loading && <CodingLoading />}
       <Title data={title} />
       <div className="notion-page">
         <div className="notion-page-content">

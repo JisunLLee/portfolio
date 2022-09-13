@@ -29,27 +29,29 @@ const CodingLoading = (props) => {
   }, [show]);
   return (
     <div className={style.container}>
-      <img
-        className={`${style.sub} ${style.sub1} ${style[show[1]]}`}
-        src="IMG_0597.svg"
-      />
-      <img
-        className={`${style.sub} ${style.sub2} ${style[show[2]]}`}
-        src="IMG_0598.svg"
-      />
-      <img
-        className={`${style.sub} ${style.sub1} ${style[show[3]]}`}
-        src="IMG_0594.svg"
-      />
-      <img
-        className={`${style.sub} ${style.sub3} ${style[show[4]]}`}
-        src="IMG_0596.svg"
-      />
-      <img
-        className={`${style.sub} ${style.sub2} ${style[show[5]]}`}
-        src="IMG_0595.svg"
-      />
-      <img className={style.main} src={main_imgs[show.main]}></img>
+      <div className={style.showbox}>
+        <img
+          className={`${style.sub} ${style.sub1} ${style[show[1]]}`}
+          src="IMG_0597.svg"
+        />
+        <img
+          className={`${style.sub} ${style.sub2} ${style[show[2]]}`}
+          src="IMG_0598.svg"
+        />
+        <img
+          className={`${style.sub} ${style.sub1} ${style[show[3]]}`}
+          src="IMG_0594.svg"
+        />
+        <img
+          className={`${style.sub} ${style.sub3} ${style[show[4]]}`}
+          src="IMG_0596.svg"
+        />
+        <img
+          className={`${style.sub} ${style.sub2} ${style[show[5]]}`}
+          src="IMG_0595.svg"
+        />
+        <img className={style.main} src={main_imgs[show.main]} />
+      </div>
     </div>
   );
 };

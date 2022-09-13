@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import HomeLoading from '../components/loading/home';
+import CodingLoading from '../components/loading/coding';
 import Blocks from '../components/notion2/blocks';
 import Properties from '../components/notion2/property/properties';
 import Title from '../components/notion2/title';
@@ -26,7 +26,7 @@ const NotionDetail2 = ({ notion_id }) => {
 
   return (
     <div className="notion">
-      {loading && <HomeLoading />}
+      {loading && <CodingLoading />}
       <Title data={title} />
       <div className="notion-page">
         <Properties properties={title && title.properties} />
