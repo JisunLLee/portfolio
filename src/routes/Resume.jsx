@@ -28,27 +28,17 @@ const Resume = (props) => {
   const [goodby, setGoodby] = useState();
   const [loading, setLoading] = useState(true);
 
-  useEffect(async () => {
-    await notion.onGetData(main_url, '/title', '제목', setTitle);
-    await notion.onGetData(main_url, '/contents?type=info', 'INFO', setInfo);
-    await notion.onGetData(
+  useEffect(() => {
+    notion.onGetData(main_url, '/title', '제목', setTitle);
+    notion.onGetData(main_url, '/contents?type=info', 'INFO', setInfo);
+    notion.onGetData(
       main_url,
       '/contents?type=introduce',
       '소개',
       setIntroduce
     );
-    await notion.onGetData(
-      main_url,
-      '/contents?type=career',
-      '경력',
-      setCareer
-    );
-    await notion.onGetData(
-      main_url,
-      '/contents?type=goodby',
-      '마무리',
-      setGoodby
-    );
+    notion.onGetData(main_url, '/contents?type=career', '경력', setCareer);
+    notion.onGetData(main_url, '/contents?type=goodby', '마무리', setGoodby);
   }, []);
 
   useEffect(() => {
