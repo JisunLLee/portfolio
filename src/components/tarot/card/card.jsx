@@ -5,7 +5,8 @@ import style from './card.module.css';
 const Tarot = ({ item, position, holdTime, message, data }) => {
   const [cardState, setCardState] = useState('back');
   const sparkRef = useRef();
-  const icon_url = `https://silencecatdog.s3.ap-northeast-2.amazonaws.com/tarot/cards/icon/${data.num}.png`;
+  const tarot_base_url = process.env.REACT_APP_TAROTCARD_BASE_URL;
+  const icon_url = `${tarot_base_url}/icon/${data.num}.png`;
   const icon_style = data.tarotTag
     ? data.tarotTag[0].forward === 1
       ? { backgroundImage: `url(${icon_url})` }
