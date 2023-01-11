@@ -108,6 +108,9 @@
   .card{
     gap:0px;
   }
+  .random_wrap{
+    margin-top: 70px;
+  }
   .img_wrap{
     height: 35%;
   }
@@ -125,7 +128,9 @@
     height: 25vh;
     overflow-x:hidden;
     overflow-y:scroll;
+    margin-top: 30px;
   }
+  
   .result_wrap{
     flex-direction: column;
     gap: 0px;
@@ -140,7 +145,7 @@
     justify-content: flex-start;
   }
   .random_wrap{
-    margin-top: 0px;
+    margin-top: 15px;
   }
 }
 
